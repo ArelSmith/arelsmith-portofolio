@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-jost: "Jost", sans-serif;
+}
+
+body {
+  @apply bg-[#EFE4D2] font-jost;
+}
