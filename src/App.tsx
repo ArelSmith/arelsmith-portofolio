@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import NavigationBar from "./components/NavigationBar";
+import AOS from "aos";
+import "aos/dist/aos.css";
+// import Jumbotron from "./components/Jumbotron";
 
 type SplashScreenProps = {
   progress: number;
@@ -51,9 +54,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ progress }) => {
 };
 
 function MainScreen() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <main>
       <NavigationBar />
+      {/* <Jumbotron /> */}
     </main>
   );
 }
@@ -72,7 +79,7 @@ function App() {
         }
         return prev + 1;
       });
-    }, 50);
+    }, 0); // 50
 
     return () => clearInterval(timer);
   }, []);

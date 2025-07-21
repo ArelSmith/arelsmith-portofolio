@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* BG = #EFE4D2
+  CL1 = #254D70
+  CL2 = #131D4F
+  CL3 = #954C2E
+  */
 @theme {
   --font-jost: "Jost", sans-serif;
 }
