@@ -24,20 +24,11 @@ const NavigationBar = () => {
           scale: 1,
           borderRadius: "0px",
           duration: 0.6,
-          // ease: "circ",
           x: 0,
           top: 0,
           left: 0,
         }
       );
-    } else {
-      gsap.to(panelRef.current, {
-        opacity: 0.8,
-        scale: 1,
-        borderRadius: "999px",
-        top: "-30em",
-        right: "-30em",
-      });
     }
   }, [hamburgerOpen]);
   return (
@@ -82,7 +73,7 @@ const NavigationBar = () => {
       {hamburgerOpen && (
         <div
           ref={panelRef}
-          className="max-w-screen bg-[#954C2E] opacity-75 w-screen h-screen absolute top-0 -z-[100] transition flex items-center justify-center"
+          className="max-w-screen bg-[#954C2E] opacity-75 w-screen h-screen absolute top-0 -z-10 transition flex items-center justify-center"
         >
           <ul className="max-w-xl text-center flex flex-col gap-y-5">
             <li>
