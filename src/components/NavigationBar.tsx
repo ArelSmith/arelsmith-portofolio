@@ -88,7 +88,7 @@ const NavigationBar = () => {
             <li>
               <Link
                 to="/"
-                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl"
+                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
               >
                 Home
               </Link>
@@ -96,7 +96,7 @@ const NavigationBar = () => {
             <li>
               <Link
                 to="/about"
-                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl"
+                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
               >
                 About Me
               </Link>
@@ -104,7 +104,7 @@ const NavigationBar = () => {
             <li>
               <Link
                 to="/projects"
-                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl"
+                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
               >
                 Project
               </Link>
@@ -112,7 +112,7 @@ const NavigationBar = () => {
             <li>
               <Link
                 to="/contact"
-                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl"
+                className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
               >
                 Contact
               </Link>
