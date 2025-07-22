@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, type Variants } from "motion/react";
-// import FeatherIcon from "feather-icons-react";
 
 const NavigationBar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
@@ -76,7 +75,7 @@ const NavigationBar = () => {
       <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5 ">
         <h1
           className={`font-semibold font-jost text-3xl transition duration-500 z-10 ${
-            hamburgerOpen ? "text-[#EFE4D2]" : "text-black"
+            hamburgerOpen ? "text-[#EFE4D2]" : "text-slate-800"
           }`}
         >
           ArelSmith.
@@ -91,14 +90,14 @@ const NavigationBar = () => {
               className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                 hamburgerOpen
                   ? "rotate-45 translate-y-[6.7px] bg-[#EFE4D2]"
-                  : "bg-black"
+                  : "bg-slate-800"
               }`}
             ></div>
             <div
               className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                 hamburgerOpen
                   ? "-rotate-45 -translate-y-[6.7px] bg-[#EFE4D2]"
-                  : "bg-black"
+                  : "bg-slate-800"
               }`}
             ></div>
           </span>

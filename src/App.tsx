@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavigationBar from "./components/NavigationBar";
 import "aos/dist/aos.css";
-// import Jumbotron from "./components/Jumbotron";
+import Jumbotron from "./components/Jumbotron";
 
 type SplashScreenProps = {
   progress: number;
@@ -56,7 +56,7 @@ function MainScreen() {
   return (
     <main>
       <NavigationBar />
-      {/* <Jumbotron /> */}
+      <Jumbotron />
     </main>
   );
 }
