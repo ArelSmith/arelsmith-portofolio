@@ -72,9 +72,9 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5 ">
+      <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5">
         <h1
-          className={`font-semibold font-jost text-3xl transition duration-500 z-10 ${
+          className={`font-semibold font-jost text-3xl transition duration-500 z-20 ${
             hamburgerOpen ? "text-[#EFE4D2]" : "text-slate-800"
           }`}
         >
@@ -83,7 +83,7 @@ const NavigationBar = () => {
 
         <button
           onClick={() => setHamburgerOpen(!hamburgerOpen)}
-          className="relative w-8 h-8 flex items-center justify-center hover:cursor-pointer z-10"
+          className="relative w-8 h-8 flex items-center justify-center hover:cursor-pointer z-20"
         >
           <span className="flex flex-col items-center justify-center gap-y-2">
             <div
@@ -107,7 +107,7 @@ const NavigationBar = () => {
       <motion.div
         variants={navVariant}
         animate={hamburgerOpen ? "open" : "close"}
-        className="max-w-screen bg-[#954C2E] backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center"
+        className="max-w-screen bg-[#954C2E] backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center z-10"
       >
         <ul className="max-w-xl text-center flex flex-col gap-y-6">
           <motion.li variants={navItemVariant} custom={0.1}>
