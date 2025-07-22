@@ -1,45 +1,76 @@
-import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { motion, type Variants } from "motion/react";
 // import FeatherIcon from "feather-icons-react";
 
 const NavigationBar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Ini variant buat navigasi
+  const navVariant: Variants = {
+    open: {
+      clipPath: "circle(3240px at calc(100% - 120px) 40px)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+    close: {
+      clipPath: "circle(0 at calc(100% - 120px) 40px)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  };
+
+  const navItemVariant: Variants = {
+    open: (custom) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: custom,
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    }),
+    close: {
+      opacity: 0,
+      x: -80,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  };
 
   useEffect(() => {
-    if (hamburgerOpen) {
-      gsap.set(panelRef.current, {
-        opacity: 0,
-        scale: 1,
-        borderRadius: "999px",
-        width: "20em",
-        height: "20em",
-        top: "-20em",
-        right: "-20em",
-        left: "auto",
-      });
+    const updateScreenWidth = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-      gsap.to(panelRef.current, {
-        opacity: 1,
-        scale: 1,
-        borderRadius: "0px",
-        duration: 0.4,
-        ease: "circ.out",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        right: "auto",
-      });
-    } else {
-      gsap.to(panelRef.current, {
-        opacity: 0,
-        duration: 0.2,
-      });
-    }
-  }, [hamburgerOpen]);
+    updateScreenWidth();
+    window.addEventListener("resize", updateScreenWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateScreenWidth);
+    };
+  }, []);
+
+  if (isMobile) {
+    navVariant.open = {
+      clipPath: "circle(3240px at calc(100% - 50px) 40px)",
+    };
+    navVariant.close = {
+      clipPath: "circle(0 at calc(100% - 50px) 40px)",
+    };
+  }
+
   return (
     <div>
       <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5 ">
@@ -73,45 +104,47 @@ const NavigationBar = () => {
           </span>
         </button>
       </nav>
-      <div
-        ref={panelRef}
-        className="max-w-screen bg-[#954C2E] opacity-75 w-screen h-screen absolute top-0 transition flex items-center justify-center"
+
+      <motion.div
+        variants={navVariant}
+        animate={hamburgerOpen ? "open" : "close"}
+        className="max-w-screen bg-[#954C2E] backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center"
       >
-        <ul className="max-w-xl text-center flex flex-col gap-y-5">
-          <li>
+        <ul className="max-w-xl text-center flex flex-col gap-y-6">
+          <motion.li variants={navItemVariant} custom={0.1}>
             <Link
               to="/"
-              className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
             >
               Home
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={navItemVariant} custom={0.2}>
             <Link
               to="/about"
-              className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
             >
               About Me
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={navItemVariant} custom={0.3}>
             <Link
               to="/projects"
-              className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
             >
               Project
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={navItemVariant} custom={0.4}>
             <Link
               to="/contact"
-              className="text-[#EFE4D2] text-2xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
             >
               Contact
             </Link>
-          </li>
+          </motion.li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };
