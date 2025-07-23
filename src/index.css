@@ -7,6 +7,10 @@
   */
 @theme {
   --font-jost: "Jost", sans-serif;
+  --color-bg: #efe4d2;
+  --color-primary: #254d70;
+  --color-secondary: #131d4f;
+  --color-tertiary: #954c2e;
 }
 
 body {

@@ -75,7 +75,7 @@ const NavigationBar = () => {
       <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5">
         <h1
           className={`font-semibold font-jost text-3xl transition duration-500 z-20 ${
-            hamburgerOpen ? "text-[#EFE4D2]" : "text-slate-800"
+            hamburgerOpen ? "text-bg" : "text-slate-800"
           }`}
         >
           ArelSmith.
@@ -89,14 +89,14 @@ const NavigationBar = () => {
             <div
               className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                 hamburgerOpen
-                  ? "rotate-45 translate-y-[6.7px] bg-[#EFE4D2]"
+                  ? "rotate-45 translate-y-[6.7px] bg-bg"
                   : "bg-slate-800"
               }`}
             ></div>
             <div
               className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                 hamburgerOpen
-                  ? "-rotate-45 -translate-y-[6.7px] bg-[#EFE4D2]"
+                  ? "-rotate-45 -translate-y-[6.7px] bg-bg"
                   : "bg-slate-800"
               }`}
             ></div>
@@ -107,13 +107,13 @@ const NavigationBar = () => {
       <motion.div
         variants={navVariant}
         animate={hamburgerOpen ? "open" : "close"}
-        className="max-w-screen bg-[#954C2E] backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center z-10"
+        className="max-w-screen bg-tertiary backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center z-10"
       >
         <ul className="max-w-xl text-center flex flex-col gap-y-6">
           <motion.li variants={navItemVariant} custom={0.1}>
             <Link
               to="/"
-              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
             >
               Home
             </Link>
@@ -121,7 +121,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.2}>
             <Link
               to="/about"
-              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
             >
               About Me
             </Link>
@@ -129,7 +129,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.3}>
             <Link
               to="/projects"
-              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
             >
               Project
             </Link>
@@ -137,7 +137,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.4}>
             <Link
               to="/contact"
-              className="text-[#EFE4D2] text-3xl hover:bg-[#131D4F] px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
             >
               Contact
             </Link>
