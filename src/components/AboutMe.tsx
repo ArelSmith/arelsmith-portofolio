@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion, type Variants } from "motion/react";
 
 const AboutMe = () => {
@@ -40,26 +39,6 @@ const AboutMe = () => {
             both aesthetic design and functional development. <br />
             Let's build something awesome!
           </motion.p>
-          <motion.div
-            variants={itemVariants}
-            initial="close"
-            animate="open"
-            custom={0.5}
-            className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
-          >
-            <Link
-              to="/"
-              className="text-white bg-tertiary hover:bg-[#5f2f1c] transition duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
-            >
-              Download CV
-            </Link>
-            <Link
-              to="/"
-              className="text-tertiary border border-tertiary hover:text-white transition duration-150 hover:bg-tertiary px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
-            >
-              Contact me
-            </Link>
-          </motion.div>
         </div>
       </div>
     </section>

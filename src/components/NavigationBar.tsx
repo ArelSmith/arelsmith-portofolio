@@ -72,43 +72,45 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <nav className="flex flex-row max-w-11/12 mx-auto justify-between items-center p-5">
-        <h1
-          className={`font-semibold font-jost text-3xl transition duration-500 z-20 ${
-            hamburgerOpen ? "text-bg" : "text-slate-800"
-          }`}
-        >
-          ArelSmith.
-        </h1>
+      <nav className="fixed top-0 left-0 w-full flex flex-row mx-auto justify-between items-center p-5 z-20">
+        <div className="w-11/12 mx-auto flex justify-between items-center">
+          <h1
+            className={`font-semibold font-jost text-3xl transition duration-500  ${
+              hamburgerOpen ? "text-bg" : "text-slate-800"
+            }`}
+          >
+            ArelSmith.
+          </h1>
 
-        <button
-          onClick={() => setHamburgerOpen(!hamburgerOpen)}
-          className="relative w-8 h-8 flex items-center justify-center hover:cursor-pointer z-20"
-        >
-          <span className="flex flex-col items-center justify-center gap-y-2">
-            <div
-              className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
-                hamburgerOpen
-                  ? "rotate-45 translate-y-[6.7px] bg-bg"
-                  : "bg-slate-800"
-              }`}
-            ></div>
-            <div
-              className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
-                hamburgerOpen
-                  ? "-rotate-45 -translate-y-[6.7px] bg-bg"
-                  : "bg-slate-800"
-              }`}
-            ></div>
-          </span>
-        </button>
+          <button
+            onClick={() => setHamburgerOpen(!hamburgerOpen)}
+            className="relative w-8 h-8 flex items-center justify-center hover:cursor-pointer "
+          >
+            <span className="flex flex-col items-center justify-center gap-y-2">
+              <div
+                className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
+                  hamburgerOpen
+                    ? "rotate-45 translate-y-[6.7px] bg-bg"
+                    : "bg-slate-800"
+                }`}
+              ></div>
+              <div
+                className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
+                  hamburgerOpen
+                    ? "-rotate-45 -translate-y-[6.7px] bg-bg"
+                    : "bg-slate-800"
+                }`}
+              ></div>
+            </span>
+          </button>
+        </div>
       </nav>
 
       <motion.div
         initial="close"
         variants={navVariant}
         animate={hamburgerOpen ? "open" : "close"}
-        className="max-w-screen bg-tertiary backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center z-10"
+        className="fixed top-0 left-0 max-w-screen bg-tertiary backdrop-blur-sm opacity-95 w-screen h-screen transition flex items-center justify-center z-10"
       >
         <ul className="max-w-xl text-center flex flex-col gap-y-6">
           <motion.li variants={navItemVariant} custom={0.1}>
