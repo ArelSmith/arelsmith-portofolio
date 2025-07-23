@@ -27,7 +27,7 @@ const NavigationBar = () => {
   };
 
   const navItemVariant: Variants = {
-    open: (custom) => ({
+    open: (custom: number) => ({
       opacity: 1,
       x: 0,
       transition: {

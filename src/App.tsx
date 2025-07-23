@@ -75,7 +75,7 @@ function App() {
         }
         return prev + 1;
       });
-    }, 50); // 50
+    }, 0); // 50
 
     return () => clearInterval(timer);
   }, []);
