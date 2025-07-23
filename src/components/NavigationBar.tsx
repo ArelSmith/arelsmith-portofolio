@@ -105,6 +105,7 @@ const NavigationBar = () => {
       </nav>
 
       <motion.div
+        initial="close"
         variants={navVariant}
         animate={hamburgerOpen ? "open" : "close"}
         className="max-w-screen bg-tertiary backdrop-blur-sm opacity-95 w-screen h-screen absolute top-0 transition flex items-center justify-center z-10"

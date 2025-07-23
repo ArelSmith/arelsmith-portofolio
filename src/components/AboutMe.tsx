@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, type Variants } from "motion/react";
-import { ReactTyped } from "react-typed";
 
-// Image
-import profile from "../../src/assets/profile_temp_2.png";
-
-const Jumbotron = () => {
+const AboutMe = () => {
   const itemVariants: Variants = {
     open: (custom) => ({
       opacity: 1,
@@ -24,27 +20,13 @@ const Jumbotron = () => {
     },
   };
   return (
-    <main>
+    <section id="#about">
       <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <div>
-            <motion.h3
-              variants={itemVariants}
-              initial="close"
-              animate="open"
-              custom={0.2}
-              className="text-lg w-30 mx-auto lg:mx-0 text-center text-bg bg-tertiary rounded-3xl px-3 py-1"
-            >
-              Arel Smith
-            </motion.h3>
-            <div className="max-w-3xl">
-              <ReactTyped
-                strings={["Junior Web <br /> Developer"]}
-                loop
-                typeSpeed={60}
-                className="text-5xl lg:text-7xl lg:w-[150%] lg:text-left font-bold text-center text-slate-800"
-              />
-            </div>
+            <h1 className="text-5xl lg:text-7xl lg:w-[150%] lg:text-left font-bold text-center text-slate-800">
+              About Me
+            </h1>
           </div>
           <motion.p
             variants={itemVariants}
@@ -79,16 +61,9 @@ const Jumbotron = () => {
             </Link>
           </motion.div>
         </div>
-        <div className="max-w-2xl">
-          <img
-            src={profile}
-            alt="Profile"
-            className="grayscale hover:grayscale-0 transition duration-300"
-          />
-        </div>
       </div>
-    </main>
+    </section>
   );
 };
 
-export default Jumbotron;
+export default AboutMe;
