@@ -6,6 +6,7 @@ import Jumbotron from "./components/Jumbotron";
 import AboutMe from "./components/AboutMe";
 import Sidebar from "./components/Sidebar";
 import Projects from "./components/Projects";
+import Contacts from "./components/Contacts";
 function MainScreen() {
   return (
     <Layout>
@@ -13,6 +14,7 @@ function MainScreen() {
       <Jumbotron />
       <AboutMe />
       <Projects />
+      <Contacts />
     </Layout>
   );
 }

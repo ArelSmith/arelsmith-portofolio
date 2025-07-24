@@ -119,9 +119,23 @@ const Sidebar = () => {
           </ScrollLink>
         </li>
         <li>
-          <button onClick={() => (window.location.hash = "contact")}>
+          <ScrollLink
+            to="contact"
+            smooth={true}
+            duration={500}
+            onClick={() => {
+              setCurrentSection("contact");
+            }}
+            className="text-white flex flex-col justify-center items-center gap-y-1 hover:cursor-pointer"
+          >
             <Mail />
-          </button>
+            <motion.div
+              variants={itemVariants}
+              initial="close"
+              animate={currentSection == "contact" ? "open" : "close"}
+              className="w-6 h-1 bg-white rounded-3xl"
+            ></motion.div>
+          </ScrollLink>
         </li>
       </ul>
     </div>

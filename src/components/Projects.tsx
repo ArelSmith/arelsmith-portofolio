@@ -1,6 +1,6 @@
 import { ChevronsRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, scale, useInView, type Variants } from "motion/react";
+import { motion, useInView, type Variants } from "motion/react";
 import { useRef } from "react";
 
 const Projects = () => {
@@ -34,7 +34,7 @@ const Projects = () => {
   };
   return (
     <section id="projects">
-      <div className="max-w-8/12 mx-auto flex flex-col gap-y-5 lg:min-h-screen mt-[76px] lg:mt-0 items-center">
+      <div className="max-w-8/12 mx-auto flex flex-col gap-y-5 lg:min-h-screen mt-[76px] lg:mt-0 items-center justify-center">
         <motion.h1
           ref={itemRef}
           variants={itemVariants}
