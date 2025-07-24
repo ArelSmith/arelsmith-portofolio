@@ -77,11 +77,12 @@ const AboutMe = () => {
             variants={itemVariants}
             initial="close"
             animate={isInView ? "open" : "close"}
+            whileTap={{ scale: 0.9 }}
             custom={0.4}
           >
             <Link
               to="/about"
-              className="text-white bg-tertiary mx-auto lg:mx-0 lg:w-50 text-center hover:bg-[#5f2f1c] hover:gap-x-6 flex flex-row items-center gap-x-3  transition-all duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+              className="text-white bg-tertiary mx-auto lg:mx-0 lg:w-50 w-40 text-center hover:bg-[#5f2f1c] hover:gap-x-6 flex flex-row items-center gap-x-3  transition-all duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
             >
               About me <ChevronsRight />
             </Link>

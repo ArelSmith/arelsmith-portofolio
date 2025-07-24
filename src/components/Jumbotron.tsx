@@ -8,10 +8,10 @@ import { useRef } from "react";
 
 const Jumbotron = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef);
-  console.log(isInView, {
+  const isInView = useInView(sectionRef, {
     once: false,
   });
+
   const itemVariants: Variants = {
     open: (custom) => ({
       opacity: 1,
@@ -73,28 +73,41 @@ const Jumbotron = () => {
             both aesthetic design and functional development. <br />
             Let's build something awesome!
           </motion.p>
-          <motion.div
-            ref={sectionRef}
-            variants={itemVariants}
-            initial="close"
-            animate={isInView ? "open" : "close"}
-            custom={0.5}
-            className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
-          >
-            <Link
-              to="https://drive.google.com/file/d/1tnVwokqI8oo8bCTqgWyb_onoqgalbyTI/view?usp=sharing"
-              target="_blank"
-              className="text-white bg-tertiary hover:bg-[#5f2f1c] transition duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+          <div className="flex flex-row">
+            <motion.div
+              ref={sectionRef}
+              variants={itemVariants}
+              initial="close"
+              animate={isInView ? "open" : "close"}
+              custom={0.5}
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
             >
-              Download CV
-            </Link>
-            <Link
-              to="/"
-              className="text-tertiary border border-tertiary hover:text-white transition duration-150 hover:bg-tertiary px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+              <Link
+                to="https://drive.google.com/file/d/1tnVwokqI8oo8bCTqgWyb_onoqgalbyTI/view?usp=sharing"
+                target="_blank"
+                className="text-white bg-tertiary hover:bg-[#5f2f1c] transition duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+              >
+                Download CV
+              </Link>
+            </motion.div>
+            <motion.div
+              ref={sectionRef}
+              variants={itemVariants}
+              initial="close"
+              animate={isInView ? "open" : "close"}
+              custom={0.6}
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
             >
-              Contact me
-            </Link>
-          </motion.div>
+              <Link
+                to="/"
+                className="text-tertiary border border-tertiary hover:text-white transition duration-150 hover:bg-tertiary px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+              >
+                Contact me
+              </Link>
+            </motion.div>
+          </div>
         </div>
         <div className="max-w-2xl">
           <motion.img
