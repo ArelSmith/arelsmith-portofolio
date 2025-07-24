@@ -1,6 +1,6 @@
 # 🧑‍🎨 My Portfolio – Arel Smith
 
-Welcome to my personal portfolio website built with **React**, **Tailwind CSS v4**, and enhanced with **DaisyUI**. This website showcases my work, skills, and contact information as a Visual Communication Design student and front-end developer.
+Welcome to my personal portfolio website built with **React**, **Tailwind CSS v4**. This website showcases my work, skills, and contact information as a Visual Communication Design student and front-end developer.
 
 ## ✨ Features
 
