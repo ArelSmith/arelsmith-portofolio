@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
-import { motion, type Variants } from "motion/react";
+import { motion, useInView, type Variants } from "motion/react";
 import { ReactTyped } from "react-typed";
 
 // Image
 import profile from "../../src/assets/profile_temp_2.png";
+import { useRef } from "react";
 
 const Jumbotron = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef);
+  console.log(isInView, {
+    once: false,
+  });
   const itemVariants: Variants = {
     open: (custom) => ({
       opacity: 1,
@@ -22,6 +28,13 @@ const Jumbotron = () => {
         type: "tween",
       },
     },
+    closeReversed: {
+      opacity: 0,
+      x: 80,
+      transition: {
+        type: "tween",
+      },
+    },
   };
   return (
     <main id="home">
@@ -29,9 +42,10 @@ const Jumbotron = () => {
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <div>
             <motion.h3
+              ref={sectionRef}
               variants={itemVariants}
               initial="close"
-              animate="open"
+              animate={isInView ? "open" : "close"}
               custom={0.2}
               className="text-lg w-30 mx-auto lg:mx-0 text-center text-bg bg-tertiary rounded-3xl px-3 py-1"
             >
@@ -47,9 +61,10 @@ const Jumbotron = () => {
             </div>
           </div>
           <motion.p
+            ref={sectionRef}
             variants={itemVariants}
             initial="close"
-            animate="open"
+            animate={isInView ? "open" : "close"}
             custom={0.4}
             className="lg:text-left text-center text-xl text-slate-800 opacity-75 font-medium"
           >
@@ -59,9 +74,10 @@ const Jumbotron = () => {
             Let's build something awesome!
           </motion.p>
           <motion.div
+            ref={sectionRef}
             variants={itemVariants}
             initial="close"
-            animate="open"
+            animate={isInView ? "open" : "close"}
             custom={0.5}
             className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
           >
@@ -81,7 +97,11 @@ const Jumbotron = () => {
           </motion.div>
         </div>
         <div className="max-w-2xl">
-          <img
+          <motion.img
+            ref={sectionRef}
+            variants={itemVariants}
+            initial="closeReversed"
+            animate={isInView ? "open" : "closeReversed"}
             src={profile}
             alt="Profile"
             className="grayscale hover:grayscale-0 transition duration-300"

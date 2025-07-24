@@ -127,7 +127,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.1}>
             <Link
               to="/"
-              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-primary px-4 py-2 rounded-3xl transition duration-100"
             >
               Home
             </Link>
@@ -135,7 +135,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.2}>
             <Link
               to="/about"
-              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-primary px-4 py-2 rounded-3xl transition duration-100"
             >
               About Me
             </Link>
@@ -143,7 +143,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.3}>
             <Link
               to="/projects"
-              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-primary px-4 py-2 rounded-3xl transition duration-100"
             >
               Project
             </Link>
@@ -151,7 +151,7 @@ const NavigationBar = () => {
           <motion.li variants={navItemVariant} custom={0.4}>
             <Link
               to="/contact"
-              className="text-[#EFE4D2] text-3xl hover:bg-secondary px-4 py-2 rounded-3xl transition duration-100"
+              className="text-[#EFE4D2] text-3xl hover:bg-primary px-4 py-2 rounded-3xl transition duration-100"
             >
               Contact
             </Link>

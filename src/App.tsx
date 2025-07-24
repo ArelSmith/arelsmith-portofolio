@@ -5,12 +5,14 @@ import Layout from "./Layout";
 import Jumbotron from "./components/Jumbotron";
 import AboutMe from "./components/AboutMe";
 import Sidebar from "./components/Sidebar";
+import Projects from "./components/Projects";
 function MainScreen() {
   return (
     <Layout>
       <Sidebar />
       <Jumbotron />
       <AboutMe />
+      <Projects />
     </Layout>
   );
 }
