@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Contacts = () => {
+  const MotionLink = motion(Link);
   const itemRef = useRef(null);
   const isInView = useInView(itemRef, {
     once: false,
@@ -60,22 +61,83 @@ const Contacts = () => {
             <br />
             arelarel576@gmail.com
           </motion.p>
-          <div className="flex flex-row gap-x-2 justify-center">
-            <Link to="/" className="bg-slate-800 text-white p-3 rounded-4xl">
+          <div className="flex flex-row gap-x-2 justify-center lg:justify-start">
+            <MotionLink
+              ref={itemRef}
+              initial={{ y: 80, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.3,
+                      },
+                    }
+                  : { y: 80, opacity: 0 }
+              }
+              to="/"
+              className="bg-slate-800 text-white p-3 rounded-4xl"
+            >
               <Instagram />
-            </Link>
-            <Link to="/" className="bg-slate-800 text-white p-3 rounded-4xl">
+            </MotionLink>
+            <MotionLink
+              ref={itemRef}
+              initial={{ y: 80, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.4,
+                      },
+                    }
+                  : { y: 80, opacity: 0 }
+              }
+              to="/"
+              className="bg-slate-800 text-white p-3 rounded-4xl"
+            >
               <Github />
-            </Link>
-            <Link
+            </MotionLink>
+            <MotionLink
+              ref={itemRef}
+              initial={{ y: 80, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.5,
+                      },
+                    }
+                  : { y: 80, opacity: 0 }
+              }
               to="mailto:arelarel576@gmail.com"
               className="bg-slate-800 text-white p-3 rounded-4xl"
             >
               <Mail />
-            </Link>
-            <Link to="/" className="bg-slate-800 text-white p-3 rounded-4xl">
+            </MotionLink>
+            <MotionLink
+              ref={itemRef}
+              initial={{ y: 80, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.6,
+                      },
+                    }
+                  : { y: 80, opacity: 0 }
+              }
+              to="/"
+              className="bg-slate-800 text-white p-3 rounded-4xl"
+            >
               <Linkedin />
-            </Link>
+            </MotionLink>
           </div>
         </div>
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
