@@ -5,6 +5,7 @@ import { motion, type Variants } from "motion/react";
 const NavigationBar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   // Ini variant buat navigasi
   const navVariant: Variants = {
@@ -53,11 +54,17 @@ const NavigationBar = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    updateScreenWidth();
-    window.addEventListener("resize", updateScreenWidth);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 76);
+    };
 
+    updateScreenWidth();
+    handleScroll();
+    window.addEventListener("resize", updateScreenWidth);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", updateScreenWidth);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -72,12 +79,16 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <nav className="fixed top-0 left-0 w-full flex flex-row mx-auto justify-between items-center p-5 z-20">
+      <nav
+        className={`fixed top-0 left-0 w-full flex flex-row mx-auto justify-between items-center p-5 z-20 transition ${
+          isScrolled ? "bg-tertiary" : "bg-none"
+        }`}
+      >
         <div className="w-11/12 mx-auto flex justify-between items-center">
           <h1
             className={`font-semibold font-jost text-3xl transition duration-500  ${
-              hamburgerOpen ? "text-bg" : "text-slate-800"
-            }`}
+              hamburgerOpen ? "text-white" : "text-slate-800"
+            } ${isScrolled ? "text-white" : "text-slate-800"}`}
           >
             ArelSmith.
           </h1>
@@ -90,16 +101,16 @@ const NavigationBar = () => {
               <div
                 className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                   hamburgerOpen
-                    ? "rotate-45 translate-y-[6.7px] bg-bg"
+                    ? "rotate-45 translate-y-[6.7px] bg-white"
                     : "bg-slate-800"
-                }`}
+                } ${isScrolled ? "bg-white" : "bg-slate-800"}`}
               ></div>
               <div
                 className={`w-10 h-[6px]  rounded-3xl transition-transform duration-300 ${
                   hamburgerOpen
-                    ? "-rotate-45 -translate-y-[6.7px] bg-bg"
+                    ? "-rotate-45 -translate-y-[6.7px] bg-white"
                     : "bg-slate-800"
-                }`}
+                } ${isScrolled ? "bg-white" : "bg-slate-800"}`}
               ></div>
             </span>
           </button>

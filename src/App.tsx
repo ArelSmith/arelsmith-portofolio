@@ -4,9 +4,11 @@ import { SplashScreen } from "./SplashScreen";
 import Layout from "./Layout";
 import Jumbotron from "./components/Jumbotron";
 import AboutMe from "./components/AboutMe";
+import Sidebar from "./components/Sidebar";
 function MainScreen() {
   return (
     <Layout>
+      <Sidebar />
       <Jumbotron />
       <AboutMe />
     </Layout>
