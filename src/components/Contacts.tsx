@@ -35,7 +35,7 @@ const Contacts = () => {
   };
   return (
     <section id="contact">
-      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-20 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
+      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
             ref={itemRef}
@@ -60,7 +60,7 @@ const Contacts = () => {
             <br />
             arelarel576@gmail.com
           </motion.p>
-          <div className="flex flex-row gap-x-2">
+          <div className="flex flex-row gap-x-2 justify-center">
             <Link to="/" className="bg-slate-800 text-white p-3 rounded-4xl">
               <Instagram />
             </Link>

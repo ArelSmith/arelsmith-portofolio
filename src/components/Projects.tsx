@@ -34,7 +34,7 @@ const Projects = () => {
   };
   return (
     <section id="projects">
-      <div className="max-w-8/12 mx-auto flex flex-col gap-y-5 lg:min-h-screen mt-[76px] lg:mt-0 items-center justify-center">
+      <div className="max-w-8/12 mx-auto flex flex-col gap-y-5 lg:min-h-screen mt-50 lg:mt-0 items-center justify-center">
         <motion.h1
           ref={itemRef}
           variants={itemVariants}

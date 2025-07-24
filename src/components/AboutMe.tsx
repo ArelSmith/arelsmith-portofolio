@@ -48,7 +48,7 @@ const AboutMe = () => {
   }, []);
   return (
     <section id="about">
-      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-20 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
+      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <div>
             <motion.h1
