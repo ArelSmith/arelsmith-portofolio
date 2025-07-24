@@ -16,15 +16,6 @@ Welcome to my personal portfolio website built with **React**, **Tailwind CSS v4
 - [Vite](https://vitejs.dev/)
 - [React](https://reactjs.org/)
 - [Tailwind CSS v4](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
-
-## 📁 Folder Structure
-src/
-├── assets/ # Images and media files
-├── components/ # Reusable UI components
-├── pages/ # Main page sections (Home, Projects, About, Contact)
-├── App.tsx # Main app component
-└── main.tsx # Entry point
 
 ## 🚀 Getting Started
 
@@ -37,3 +28,7 @@ yarn install
 yarn dev
 ```
 
+## 📞 Contact
+Fell free to reach out!
+- Instagram: @arelsmith6
+- Gmail: arelarel576@gmail.com
