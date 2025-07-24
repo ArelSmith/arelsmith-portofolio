@@ -5,11 +5,9 @@ Welcome to my personal portfolio website built with **React**, **Tailwind CSS v4
 ## ✨ Features
 
 - Fully responsive design
-- Modern UI with Tailwind CSS v4 and DaisyUI
+- Modern UI with Tailwind CSS v4
 - Smooth scroll and animations
 - Project showcase section
-- Contact form (optional: integrated with email/third-party service)
-- Light/Dark mode toggle (if applicable)
 
 ## 🛠️ Built With
 
