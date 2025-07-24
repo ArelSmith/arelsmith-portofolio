@@ -1,9 +1,12 @@
 import { motion, type Variants } from "motion/react";
 import { Link } from "react-router-dom";
 import { ChevronsRight } from "lucide-react";
+import VanillaTilt from "vanilla-tilt";
 
 import profileAboutMe from "../assets/profile_about_me.jpg";
+import { useEffect, useRef } from "react";
 const AboutMe = () => {
+  const imageRef = useRef<HTMLImageElement>(null);
   const itemVariants: Variants = {
     open: (custom) => ({
       opacity: 1,
@@ -21,8 +24,18 @@ const AboutMe = () => {
       },
     },
   };
+
+  useEffect(() => {
+    if (imageRef.current) {
+      VanillaTilt.init(imageRef.current, {
+        max: 25,
+        speed: 1000,
+        transition: true,
+      });
+    }
+  }, []);
   return (
-    <section id="#about">
+    <section id="about">
       <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-20 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <div>
@@ -47,7 +60,13 @@ const AboutMe = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
-          <img src={profileAboutMe} alt="" className="rounded-3xl" />
+          <img
+            src={profileAboutMe}
+            alt="Profile"
+            className="rounded-3xl grayscale hover:grayscale-0 transition"
+            ref={imageRef}
+            data-tilt
+          />
         </div>
       </div>
     </section>

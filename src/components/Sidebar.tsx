@@ -23,24 +23,28 @@ const Sidebar = () => {
     },
   };
 
-  console.log(currentSection);
-
   useEffect(() => {
     const sections = ["home", "about", "projects", "contact"];
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(
-        (entry) => {
+
+    const currentY = window.scrollY;
+    if (currentY < window.innerHeight / 2) {
+      setCurrentSection("home");
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setCurrentSection(entry.target.id);
           }
-        },
-        {
-          root: null, // viewport
-          rootMargin: "0px",
-          threshold: 1, // 50% masuk viewport
-        }
-      );
-    });
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.6,
+      }
+    );
 
     sections.forEach((id) => {
       const el = document.getElementById(id);
@@ -59,11 +63,10 @@ const Sidebar = () => {
       <ul className="flex flex-col items-center space-y-10 py-4">
         <li>
           <ScrollLink
-            to="#home"
+            to="home"
             smooth={true}
             duration={500}
             onClick={() => {
-              window.location.hash = "#home";
               setCurrentSection("home");
             }}
             className="text-white flex flex-col justify-center items-center gap-y-1 hover:cursor-pointer"
@@ -79,11 +82,10 @@ const Sidebar = () => {
         </li>
         <li>
           <ScrollLink
-            to="#about"
+            to="about"
             smooth={true}
             duration={500}
             onClick={() => {
-              window.location.hash = "#about";
               setCurrentSection("about");
             }}
             className="text-white flex flex-col justify-center items-center gap-y-1 hover:cursor-pointer"

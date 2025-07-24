@@ -31,7 +31,8 @@
     "react-typed": "^2.0.12",
     "shadcn": "^2.9.3",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

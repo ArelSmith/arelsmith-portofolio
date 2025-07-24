@@ -24,7 +24,7 @@ const Jumbotron = () => {
     },
   };
   return (
-    <main id="#home">
+    <main id="home">
       <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:min-h-screen mt-[76px] lg:mt-0 items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <div>
