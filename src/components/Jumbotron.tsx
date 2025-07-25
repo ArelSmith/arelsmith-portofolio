@@ -4,10 +4,11 @@ import { ReactTyped } from "react-typed";
 
 // Image
 import profile from "../../src/assets/profile_temp_2.png";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Jumbotron = () => {
   const sectionRef = useRef(null);
+  const [contactPanel, setContactPanel] = useState(false);
   const isInView = useInView(sectionRef, {
     once: false,
   });
@@ -84,7 +85,7 @@ const Jumbotron = () => {
               className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
             >
               <Link
-                to="https://drive.google.com/file/d/1tnVwokqI8oo8bCTqgWyb_onoqgalbyTI/view?usp=sharing"
+                to="https://drive.google.com/file/d/1aUsb-jkAobkjT35A3XJSNuegJMo5LjEQ/view?usp=sharing"
                 target="_blank"
                 className="text-white bg-tertiary hover:bg-[#5f2f1c] transition duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
               >
@@ -100,12 +101,12 @@ const Jumbotron = () => {
               whileTap={{ scale: 0.9 }}
               className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
             >
-              <Link
-                to="/"
-                className="text-tertiary border border-tertiary hover:text-white transition duration-150 hover:bg-tertiary px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
+              <button
+                onClick={() => setContactPanel(true)}
+                className="text-tertiary hover:cursor-pointer border border-tertiary hover:text-white transition duration-150 hover:bg-tertiary px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
               >
                 Contact me
-              </Link>
+              </button>
             </motion.div>
           </div>
         </div>
@@ -117,10 +118,73 @@ const Jumbotron = () => {
             animate={isInView ? "open" : "closeReversed"}
             src={profile}
             alt="Profile"
-            className="grayscale hover:grayscale-0 transition duration-300"
+            className="grayscale-0 lg:grayscale hover:grayscale-0 transition duration-300"
           />
         </div>
       </div>
+      {contactPanel && (
+        <div
+          className="fixed inset-0 z-50 grid place-content-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modalTitle"
+        >
+          <div className="w-full max-w-md rounded-lg bg-tertiary p-6 shadow-lg">
+            <div className="flex items-start justify-between">
+              <h2
+                id="modalTitle"
+                className="text-xl font-bold text-white sm:text-2xl"
+              >
+                Contact Me
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => setContactPanel(false)}
+                className="-me-4 -mt-4 rounded-full p-2 text-white transition-colors hover:text-gray-600 hover:cursor-pointer focus:outline-none"
+                aria-label="Close"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-pretty text-white">
+                How would you contact me?
+              </p>
+            </div>
+
+            <footer className="mt-6 flex justify-end gap-2">
+              <Link
+                to="mailto:arelarel576@gmail.com"
+                className="rounded-2xl hover:cursor-pointer bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
+              >
+                Email
+              </Link>
+
+              <Link
+                to="https://web.whatsapp.com/send?phone=6288294102558"
+                className="rounded-2xl hover:cursor-pointer bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+              >
+                Whatsapp
+              </Link>
+            </footer>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

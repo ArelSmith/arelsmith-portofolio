@@ -96,7 +96,7 @@ const AboutMe = () => {
           <motion.img
             src={profileAboutMe}
             alt="Profile"
-            className="rounded-3xl grayscale hover:grayscale-0 transition"
+            className="rounded-3xl grayscale-0 lg:grayscale hover:grayscale-0 transition"
             ref={itemRef}
             variants={itemVariants}
             initial="closeReversed"

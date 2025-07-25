@@ -76,7 +76,8 @@ const Contacts = () => {
                     }
                   : { y: 80, opacity: 0 }
               }
-              to="/"
+              to="https://www.instagram.com/arelsmith6/"
+              target="_blank"
               className="bg-slate-800 text-white p-3 rounded-4xl"
             >
               <Instagram />
@@ -95,7 +96,8 @@ const Contacts = () => {
                     }
                   : { y: 80, opacity: 0 }
               }
-              to="/"
+              to="https://github.com/ArelSmith/"
+              target="_blank"
               className="bg-slate-800 text-white p-3 rounded-4xl"
             >
               <Github />
@@ -133,7 +135,8 @@ const Contacts = () => {
                     }
                   : { y: 80, opacity: 0 }
               }
-              to="/"
+              to="https://www.linkedin.com/in/arel-smith-9633b6293/"
+              target="_blank"
               className="bg-slate-800 text-white p-3 rounded-4xl"
             >
               <Linkedin />
@@ -149,7 +152,7 @@ const Contacts = () => {
             custom={0.3}
             src={contactImage}
             alt="Contact Image"
-            className="grayscale-100 hover:grayscale-0 hover:scale-110 transition duration-150"
+            className="grayscale-0 lg:grayscale hover:grayscale-0 hover:scale-110 transition duration-150"
           />
         </div>
       </div>
