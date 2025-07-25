@@ -7,6 +7,7 @@ import AboutMe from "./components/AboutMe";
 import Sidebar from "./components/Sidebar";
 import Projects from "./components/Projects";
 import Contacts from "./components/Contacts";
+import Footer from "./components/Footer";
 function MainScreen() {
   return (
     <Layout>
@@ -15,6 +16,7 @@ function MainScreen() {
       <AboutMe />
       <Projects />
       <Contacts />
+      <Footer />
     </Layout>
   );
 }
@@ -33,7 +35,7 @@ function App() {
         }
         return prev + 1;
       });
-    }, 50); // 50
+    }, 0); // 50
 
     return () => clearInterval(timer);
   }, []);

@@ -78,7 +78,7 @@ const Contacts = () => {
               }
               to="https://www.instagram.com/arelsmith6/"
               target="_blank"
-              className="bg-slate-800 text-white p-3 rounded-4xl"
+              className="bg-slate-800 text-white p-3 rounded-4xl hover:bg-slate-600 transition"
             >
               <Instagram />
             </MotionLink>
@@ -98,7 +98,7 @@ const Contacts = () => {
               }
               to="https://github.com/ArelSmith/"
               target="_blank"
-              className="bg-slate-800 text-white p-3 rounded-4xl"
+              className="bg-slate-800 text-white p-3 rounded-4xl hover:bg-slate-600 transition"
             >
               <Github />
             </MotionLink>
@@ -117,7 +117,7 @@ const Contacts = () => {
                   : { y: 80, opacity: 0 }
               }
               to="mailto:arelarel576@gmail.com"
-              className="bg-slate-800 text-white p-3 rounded-4xl"
+              className="bg-slate-800 text-white p-3 rounded-4xl hover:bg-slate-600 transition"
             >
               <Mail />
             </MotionLink>
@@ -137,7 +137,7 @@ const Contacts = () => {
               }
               to="https://www.linkedin.com/in/arel-smith-9633b6293/"
               target="_blank"
-              className="bg-slate-800 text-white p-3 rounded-4xl"
+              className="bg-slate-800 text-white p-3 rounded-4xl hover:bg-slate-600 transition"
             >
               <Linkedin />
             </MotionLink>
