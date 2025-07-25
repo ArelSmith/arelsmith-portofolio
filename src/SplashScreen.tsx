@@ -9,7 +9,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ progress }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
 
   useEffect(() => {
-    let interval: number | null = null;
+    let interval: NodeJS.Timeout | null = null;
 
     interval = setInterval(() => {
       setCurrentWordIndex((prevIndex) => {
