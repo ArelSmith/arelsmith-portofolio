@@ -4,11 +4,12 @@ import { ReactTyped } from "react-typed";
 
 // Image
 import profile from "../../src/assets/profile_temp_2.png";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Jumbotron = () => {
   const sectionRef = useRef(null);
-  const [contactPanel, setContactPanel] = useState(false);
+  const [contactPanel, setContactPanel] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const isInView = useInView(sectionRef, {
     once: false,
   });
@@ -37,6 +38,18 @@ const Jumbotron = () => {
       },
     },
   };
+
+  useEffect(() => {
+    const updateScreenWidth = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    updateScreenWidth();
+
+    window.addEventListener("resize", updateScreenWidth);
+    return () => {
+      window.removeEventListener("resize", updateScreenWidth);
+    };
+  }, []);
   return (
     <main id="home">
       <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:min-h-screen mt-[76px] lg:mt-0 items-center justify-between">
@@ -74,7 +87,7 @@ const Jumbotron = () => {
             both aesthetic design and functional development. <br />
             Let's build something awesome!
           </motion.p>
-          <div className="flex flex-row">
+          <div className="flex flex-row justify-around">
             <motion.div
               ref={sectionRef}
               variants={itemVariants}
@@ -176,7 +189,11 @@ const Jumbotron = () => {
               </Link>
 
               <Link
-                to="https://web.whatsapp.com/send?phone=6288294102558"
+                to={
+                  isMobile
+                    ? "https://wa.me/6288294102558"
+                    : "https://web.whatsapp.com/send?phone=6288294102558"
+                }
                 className="rounded-2xl hover:cursor-pointer bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
               >
                 Whatsapp
