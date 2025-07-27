@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Contacts = () => {
-  const MotionLink = motion(Link);
+  const MotionLink = motion.create(Link);
   const itemRef = useRef(null);
   const isInView = useInView(itemRef, {
     once: false,

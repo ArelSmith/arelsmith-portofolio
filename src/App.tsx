@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SplashScreen } from "./SplashScreen";
+import { useCookies } from "react-cookie";
 
 import Layout from "./Layout";
 import Jumbotron from "./components/Jumbotron";
@@ -22,6 +23,7 @@ function MainScreen() {
 }
 
 function App() {
+  const [cookies, setCookie] = useCookies(["splashSeen"]);
   const [progress, setProgress] = useState(0);
   const [loadingComplete, setLoadingComplete] = useState(false);
 
@@ -31,14 +33,20 @@ function App() {
         if (prev >= 100) {
           clearInterval(timer);
           setTimeout(() => setLoadingComplete(true), 300);
+          setCookie("splashSeen", true, { path: "/", maxAge: 86400 });
           return 100;
         }
         return prev + 1;
       });
-    }, 0); // 50
+    }, 50); // 50
+
+    if (cookies.splashSeen) {
+      setLoadingComplete(true);
+      return;
+    }
 
     return () => clearInterval(timer);
-  }, []);
+  }, [cookies, setCookie]);
 
   if (!loadingComplete) {
     return <SplashScreen progress={progress} />;

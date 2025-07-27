@@ -15,5 +15,5 @@
 }
 
 body {
-  @apply bg-[#EFE4D2] font-jost;
+  @apply bg-[#EFE4D2] font-jost scroll-smooth;
 }
