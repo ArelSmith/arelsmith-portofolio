@@ -97,13 +97,13 @@ const Jumbotron = () => {
               whileTap={{ scale: 0.9 }}
               className="flex flex-row justify-around lg:justify-start lg:gap-x-5 lg:w-100"
             >
-              <Link
-                to="https://drive.google.com/file/d/1aUsb-jkAobkjT35A3XJSNuegJMo5LjEQ/view?usp=sharing"
+              <a
+                href="https://drive.google.com/file/d/1aUsb-jkAobkjT35A3XJSNuegJMo5LjEQ/view?usp=sharing"
                 target="_blank"
                 className="text-white bg-tertiary hover:bg-[#5f2f1c] transition duration-150 px-4 py-2 rounded-2xl shadow-xl lg:text-2xl lg:px-6 lg:py-4"
               >
                 Download CV
-              </Link>
+              </a>
             </motion.div>
             <motion.div
               ref={sectionRef}

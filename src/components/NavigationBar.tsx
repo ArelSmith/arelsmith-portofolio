@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, type Variants } from "motion/react";
+import { ChevronLeft } from "lucide-react";
 
 const NavigationBar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
@@ -86,10 +87,15 @@ const NavigationBar = () => {
       >
         <div className="w-11/12 mx-auto flex justify-between items-center">
           <h1
-            className={`font-semibold font-jost text-3xl transition duration-500  ${
+            className={`font-semibold font-jost text-3xl transition duration-500 flex flex-row items-center gap-x-5 ${
               hamburgerOpen ? "text-white" : "text-slate-800"
             } ${isScrolled ? "text-white" : "text-slate-800"}`}
           >
+            {window.location.pathname != "/" && (
+              <Link to="/">
+                <ChevronLeft />
+              </Link>
+            )}
             ArelSmith.
           </h1>
 
