@@ -18,7 +18,7 @@ const Jumbotron: FC = () => {
         <h1 className="text-5xl lg:text-7xl font-bold text-center text-slate-800">
           About me
         </h1>
-        <div className="w-15 h-2 mx-auto bg-black rounded-3xl"></div>
+        <div className="w-15 h-2 mx-auto bg-slate-800 rounded-3xl"></div>
         <p className="text-center ">
           You're arrived at the right place to learn more about the person
           behind the projects. Here's a closer look at my journey, my passions,
@@ -31,7 +31,7 @@ const Jumbotron: FC = () => {
 
 const SelfDetail: FC = () => {
   return (
-    <div className="h-screen w-10/12 mx-auto flex flex-col lg:flex-row justify-around items-center">
+    <div className="h-screen w-10/12 mx-auto flex flex-col lg:flex-row mt-50 justify-around items-center gap-y-20">
       <div className="lg:w-5/12 w-50 relative">
         <img src={image1} alt="Image 1" className="lg:w-100 w-200" />
         <img
@@ -45,8 +45,21 @@ const SelfDetail: FC = () => {
           className="lg:w-100 w-200 absolute -top-25 -left-25 lg:-top-50 lg:-left-50 scale-45"
         />
       </div>
-      <div className="">
-        <h1>Hello World</h1>
+      <div className="lg:w-5/12 flex flex-col gap-y-5">
+        <h1 className="text-5xl font-bold text-center text-slate-800">
+          Arel Smith
+        </h1>
+        <p className="text-center text-slate-800">
+          a 17-year old student currently in my final year of vocational high
+          school majoring in Visual Communication Design. While my foundation
+          lies in the world of design, I've developed a strong passion for web
+          development, especially in crafting and building clean, responsive
+          interfaces that blend aesthetics with functionality. I enjoy learning
+          new technologies, building digital experiences, and constantly
+          challenging myself to grow as both designer and web developer. This
+          portofolio is a reflection of that journey and I'm just getting
+          started.
+        </p>
       </div>
     </div>
   );
