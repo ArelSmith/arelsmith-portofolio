@@ -5,6 +5,8 @@ import type { FC } from "react";
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
 import image3 from "@/assets/image_3.png";
+import { Box } from "lucide-react";
+import ServiceCard from "@/components/ServiceCard";
 
 const Jumbotron: FC = () => {
   return (
@@ -19,7 +21,7 @@ const Jumbotron: FC = () => {
           About me
         </h1>
         <div className="w-15 h-2 mx-auto bg-slate-800 rounded-3xl"></div>
-        <p className="text-center ">
+        <p className="text-center text-slate-800">
           You're arrived at the right place to learn more about the person
           behind the projects. Here's a closer look at my journey, my passions,
           and the values that shape my works.
@@ -65,11 +67,44 @@ const SelfDetail: FC = () => {
   );
 };
 
+const MySkill: FC = () => {
+  return (
+    <div className="h-screen w-10/12 mx-auto flex flex-col gap-y-30">
+      <div className="flex flex-col gap-y-5">
+        <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 text-center">
+          Skills & Expertise
+        </h1>
+        <p className="text-slate-800 text-center text-xl">
+          All of my technical skills.
+        </p>
+      </div>
+      <div className="flex flex-row mx-auto gap-x-10">
+        <ServiceCard
+          icon={<Box className="w-8 h-8 text-gray-700" />}
+          title="Web Development"
+          description="Building modern, responsive web applications"
+        />
+        <ServiceCard
+          icon={<Box className="w-8 h-8 text-gray-700" />}
+          title="Web Development"
+          description="Building modern, responsive web applications"
+        />
+        <ServiceCard
+          icon={<Box className="w-8 h-8 text-gray-700" />}
+          title="Web Development"
+          description="Building modern, responsive web applications"
+        />
+      </div>
+    </div>
+  );
+};
+
 const AboutMe: FC = () => {
   return (
     <Layout>
       <Jumbotron />
       <SelfDetail />
+      <MySkill />
     </Layout>
   );
 };
