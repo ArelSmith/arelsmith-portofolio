@@ -65,7 +65,7 @@ const Jumbotron = () => {
             >
               Arel Smith
             </motion.h3>
-            <div className="max-w-3xl">
+            <div className="max-w-3xl h-25 lg:h-50">
               <ReactTyped
                 strings={["Junior Web <br /> Developer"]}
                 loop

@@ -1,11 +1,11 @@
 import Layout from "@/Layout";
 import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
-import type { FC } from "react";
+import { useState, type FC } from "react";
 
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
 import image3 from "@/assets/image_3.png";
-import { Box } from "lucide-react";
+import { Box, Smartphone, Webhook } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 
 const Jumbotron: FC = () => {
@@ -69,7 +69,7 @@ const SelfDetail: FC = () => {
 
 const MySkill: FC = () => {
   return (
-    <div className="h-screen w-10/12 mx-auto flex flex-col gap-y-30">
+    <div className="h-screen w-10/12 mx-auto flex flex-col gap-y-30 mt-50">
       <div className="flex flex-col gap-y-5">
         <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 text-center">
           Skills & Expertise
@@ -85,14 +85,14 @@ const MySkill: FC = () => {
           description="Building modern, responsive web applications"
         />
         <ServiceCard
-          icon={<Box className="w-8 h-8 text-gray-700" />}
-          title="Web Development"
-          description="Building modern, responsive web applications"
+          icon={<Smartphone className="w-8 h-8 text-gray-700" />}
+          title="UI/UX Design"
+          description="Crafting aesthetic and attractive design with decent user experience"
         />
         <ServiceCard
-          icon={<Box className="w-8 h-8 text-gray-700" />}
-          title="Web Development"
-          description="Building modern, responsive web applications"
+          icon={<Webhook className="w-8 h-8 text-gray-700" />}
+          title="REST API"
+          description="Making each communication between app in convenient way"
         />
       </div>
     </div>
