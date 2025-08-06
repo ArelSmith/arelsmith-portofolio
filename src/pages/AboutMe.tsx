@@ -1,6 +1,6 @@
 import Layout from "@/Layout";
 import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
-import { useState, type FC } from "react";
+import { type FC } from "react";
 
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
