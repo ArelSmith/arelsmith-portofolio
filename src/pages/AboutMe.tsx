@@ -1,12 +1,31 @@
 import Layout from "@/Layout";
 import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
-import { type FC } from "react";
+import { useState, type FC } from "react";
 
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
 import image3 from "@/assets/image_3.png";
 import { Box, Smartphone, Webhook } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
+
+const skills = [
+  {
+    icon: <Box className="w-8 h-8 text-gray-700" />,
+    title: "Web Development",
+    description: "Building modern, responsive web applications",
+  },
+  {
+    icon: <Smartphone className="w-8 h-8 text-gray-700" />,
+    title: "UI/UX and Graphic Design",
+    description:
+      "Crafting aesthetic and attractive design with decent user experience",
+  },
+  {
+    icon: <Webhook className="w-8 h-8 text-gray-700" />,
+    title: "REST API",
+    description: "Making each communication between app in convenient way",
+  },
+];
 
 const Jumbotron: FC = () => {
   return (
@@ -68,6 +87,31 @@ const SelfDetail: FC = () => {
 };
 
 const MySkill: FC = () => {
+  const stacks = [
+    [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "Typescript",
+      "PHP",
+      "React",
+      "NextJS",
+      "TailwindCSS",
+      "Bootstrap",
+      "NodeJS",
+      "ExpressJS",
+      "Laravel",
+      "Visual Studio Code",
+      "Git",
+      "GitHub",
+      "Figma",
+      "Vite",
+      "Docker",
+    ],
+    ["Figma", "Photoshop", "Illustrator", "CorelDraw", "Canva"],
+    ["Postman"],
+  ];
+  const [activeTechStack, setActiveTechStack] = useState<number | null>(1);
   return (
     <div className="h-screen w-10/12 mx-auto flex flex-col gap-y-30 mt-50">
       <div className="flex flex-col gap-y-5">
@@ -79,22 +123,39 @@ const MySkill: FC = () => {
         </p>
       </div>
       <div className="flex flex-row mx-auto gap-x-10">
-        <ServiceCard
-          icon={<Box className="w-8 h-8 text-gray-700" />}
-          title="Web Development"
-          description="Building modern, responsive web applications"
-        />
-        <ServiceCard
-          icon={<Smartphone className="w-8 h-8 text-gray-700" />}
-          title="UI/UX Design"
-          description="Crafting aesthetic and attractive design with decent user experience"
-        />
-        <ServiceCard
-          icon={<Webhook className="w-8 h-8 text-gray-700" />}
-          title="REST API"
-          description="Making each communication between app in convenient way"
-        />
+        {skills.map((skill, key) => (
+          <div
+            key={key}
+            className="cursor-pointer transition-transform hover:scale-105"
+            onClick={() =>
+              setActiveTechStack((prev) => (prev === key ? null : key))
+            }
+          >
+            <ServiceCard
+              icon={skill.icon}
+              title={skill.title}
+              description={skill.description}
+            />
+          </div>
+        ))}
       </div>
+      {activeTechStack !== null && (
+        <div className="mt-10 p-6 bg-gray-100 rounded-lg shadow text-center">
+          <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+            Tech Stack - {skills[activeTechStack].title}
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {stacks[activeTechStack].map((stack, idx) => (
+              <span
+                key={idx}
+                className="bg-slate-800 text-white px-4 py-2 rounded-full text-sm"
+              >
+                {stack}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
