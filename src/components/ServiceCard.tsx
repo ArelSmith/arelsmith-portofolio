@@ -13,7 +13,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description,
 }) => {
   return (
-    <div className="max-w-sm p-6 bg-white rounded-lg border border-gray-300 shadow-md hover:shadow-lg transition-shadow duration-300">
+    <div
+      className={`max-w-sm p-6 h-full bg-white rounded-lg border border-gray-300 shadow-md hover:shadow-lg transition-shadow duration-300`}
+    >
       <div className="flex justify-center mb-4">
         <div className="p-4 bg-gray-100 rounded-lg">{icon}</div>
       </div>

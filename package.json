@@ -28,6 +28,7 @@
     "react-cookie": "^8.0.1",
     "react-cookies": "^0.1.1",
     "react-dom": "^19.1.0",
+    "react-fast-marquee": "^1.6.5",
     "react-locomotive-scroll": "^0.2.2",
     "react-page-scroller": "^3.0.1",
     "react-router-dom": "^7.7.0",
