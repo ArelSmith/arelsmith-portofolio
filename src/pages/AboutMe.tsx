@@ -8,25 +8,6 @@ import image3 from "@/assets/image_3.png";
 import { Box, Smartphone, Webhook } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 
-const skills = [
-  {
-    icon: <Box className="w-8 h-8 text-gray-700" />,
-    title: "Web Development",
-    description: "Building modern, responsive web applications",
-  },
-  {
-    icon: <Smartphone className="w-8 h-8 text-gray-700" />,
-    title: "UI/UX and Graphic Design",
-    description:
-      "Crafting aesthetic and attractive design with decent user experience",
-  },
-  {
-    icon: <Webhook className="w-8 h-8 text-gray-700" />,
-    title: "REST API",
-    description: "Making each communication between app in convenient way",
-  },
-];
-
 const Jumbotron: FC = () => {
   return (
     <div className="flex flex-col lg:flex-row-reverse lg:items-center mx-auto lg:mt-0 mt-[76px] gap-y-6">
@@ -87,6 +68,24 @@ const SelfDetail: FC = () => {
 };
 
 const MySkill: FC = () => {
+  const skills = [
+    {
+      icon: <Box className="w-8 h-8 text-gray-700" />,
+      title: "Web Development",
+      description: "Building modern, responsive web applications",
+    },
+    {
+      icon: <Smartphone className="w-8 h-8 text-gray-700" />,
+      title: "UI/UX and Graphic Design",
+      description:
+        "Crafting aesthetic and attractive design with decent user experience",
+    },
+    {
+      icon: <Webhook className="w-8 h-8 text-gray-700" />,
+      title: "REST API",
+      description: "Making each communication between app in convenient way",
+    },
+  ];
   const stacks = [
     [
       "HTML",
@@ -109,9 +108,9 @@ const MySkill: FC = () => {
       "Docker",
     ],
     ["Figma", "Photoshop", "Illustrator", "CorelDraw", "Canva"],
-    ["Postman"],
+    ["Postman", "Strapi"],
   ];
-  const [activeTechStack, setActiveTechStack] = useState<number | null>(1);
+  const [activeTechStack, setActiveTechStack] = useState<number | null>(null);
   return (
     <div className="h-screen w-10/12 mx-auto flex flex-col gap-y-30 mt-50">
       <div className="flex flex-col gap-y-5">
@@ -141,7 +140,7 @@ const MySkill: FC = () => {
       </div>
       {activeTechStack !== null && (
         <div className="mt-10 p-6 bg-gray-100 rounded-lg shadow text-center">
-          <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+          <h2 className="text-2xl font-semibold text-slate-800 mb-4 active:border">
             Tech Stack - {skills[activeTechStack].title}
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
