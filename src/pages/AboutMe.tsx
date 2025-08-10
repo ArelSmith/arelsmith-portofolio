@@ -5,7 +5,7 @@ import { useState, type FC } from "react";
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
 import image3 from "@/assets/image_3.png";
-import { Box, Smartphone, Music } from "lucide-react";
+import { Box, Smartphone } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import Marquee from "react-fast-marquee";
 
@@ -38,12 +38,6 @@ import canva from "@/assets/canva.svg";
 import premiere from "@/assets/premiere.svg";
 import capcut from "@/assets/capcut.svg";
 import chatgpt from "@/assets/openai-chatgpt.svg";
-
-import guitar from "@/assets/guitar.svg";
-import piano from "@/assets/piano.svg";
-import fabfilter from "@/assets/FabFilter_Logo.svg";
-import ableton from "@/assets/ableton-dark.svg";
-import fl from "@/assets/fl-studio-mobile.svg";
 import Footer from "@/components/Footer";
 
 const Jumbotron: FC = () => {
@@ -118,12 +112,6 @@ const MySkill: FC = () => {
       description:
         "Giving life to ideas through visual storytelling and my foundation as a Visual Communication Student",
     },
-    {
-      icon: <Music className="w-8 h-8 text-gray-700" />,
-      title: "Audio Workstation",
-      description:
-        "Unleash the creative potential of audio through music production and sound design",
-    },
   ];
   const stacks = [
     [
@@ -157,7 +145,6 @@ const MySkill: FC = () => {
       capcut,
       chatgpt,
     ],
-    [guitar, piano, ableton, fl, fabfilter],
   ];
   const [activeTechStack, setActiveTechStack] = useState<number | null>(0);
   return (
