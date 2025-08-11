@@ -1,13 +1,15 @@
+import contactImage from "@/assets/contact_image_cropped.jpeg";
+import Footer from "@/components/Footer";
+import Layout from "@/Layout";
 import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { motion, useInView, type Variants } from "motion/react";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import contactImage from "@/assets/contact_image_cropped.jpeg";
 
-const Contacts = () => {
+const ContactPages = () => {
   const MotionLink = motion.create(Link);
-  const itemRef = useRef(null);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const itemRef = useRef(null);
   const isInView = useInView(itemRef, {
     once: false,
   });
@@ -48,8 +50,8 @@ const Contacts = () => {
     };
   }, []);
   return (
-    <section id="contact">
-      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between">
+    <Layout>
+      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
             ref={itemRef}
@@ -193,8 +195,9 @@ const Contacts = () => {
           />
         </div>
       </div>
-    </section>
+      <Footer />
+    </Layout>
   );
 };
 
-export default Contacts;
+export default ContactPages;

@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import AboutMe from "./pages/AboutMe.tsx";
 import { ScrollToTop } from "./components/ScrollToTop.tsx";
 import Projects from "./pages/Projects.tsx";
+import ContactPages from "./pages/ContactPages.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<App />} />
           <Route path="/about" element={<AboutMe />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<ContactPages />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
