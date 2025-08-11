@@ -1,6 +1,8 @@
 import Layout from "@/Layout";
 import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
-import { useState, type FC } from "react";
+import { useContext, useState, type FC } from "react";
+import { motion } from "motion/react";
+import AnimationProvider from "@/context/Animation/AnimationProvider";
 
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
@@ -39,51 +41,107 @@ import premiere from "@/assets/premiere.svg";
 import capcut from "@/assets/capcut.svg";
 import chatgpt from "@/assets/openai-chatgpt.svg";
 import Footer from "@/components/Footer";
+import { AnimationContext } from "@/context/Animation/AnimationContext";
 
 const Jumbotron: FC = () => {
+  const ctx = useContext(AnimationContext);
+  if (!ctx) return null;
+  const { jumbotronRef, itemVariants, isInView1 } = ctx;
   return (
-    <div className="flex flex-col lg:flex-row-reverse lg:items-center mx-auto lg:mt-0 mt-[76px] gap-y-6">
+    <div
+      ref={jumbotronRef}
+      className="flex flex-col lg:flex-row-reverse lg:items-center mx-auto lg:mt-0 mt-[76px] gap-y-6"
+    >
       <img
         src={aboutMeThumbnail}
         alt="About me Thumbnail"
         className="lg:w-1/2 lg:h-screen"
       />
       <div className="flex flex-col gap-y-2 lg:max-w-96 max-w-60 mx-auto">
-        <h1 className="text-5xl lg:text-7xl font-bold text-center text-slate-800">
+        <motion.h1
+          variants={itemVariants}
+          initial="close"
+          animate={isInView1 ? "open" : "close"}
+          custom={0.1}
+          className="text-5xl lg:text-7xl font-bold text-center text-slate-800"
+        >
           About me
-        </h1>
-        <div className="w-15 h-2 mx-auto bg-slate-800 rounded-3xl"></div>
-        <p className="text-center text-slate-800">
+        </motion.h1>
+        <motion.div
+          variants={itemVariants}
+          initial="close"
+          animate={isInView1 ? "open" : "close"}
+          custom={0.2}
+          className="w-15 h-2 mx-auto bg-slate-800 rounded-3xl"
+        ></motion.div>
+        <motion.p
+          variants={itemVariants}
+          initial="close"
+          animate={isInView1 ? "open" : "close"}
+          custom={0.3}
+          className="text-center text-slate-800"
+        >
           You're arrived at the right place to learn more about the person
           behind the projects. Here's a closer look at my journey, my passions,
           and the values that shape my works.
-        </p>
+        </motion.p>
       </div>
     </div>
   );
 };
 
 const SelfDetail: FC = () => {
+  const ctx = useContext(AnimationContext);
+  if (!ctx) return null;
+  const { selfDetailRef, itemVariants, isInView2 } = ctx;
   return (
     <div className="h-screen w-10/12 mx-auto flex flex-col lg:flex-row mt-50 justify-around items-center gap-y-20">
-      <div className="lg:w-5/12 w-50 relative">
-        <img src={image1} alt="Image 1" className="lg:w-100 w-200" />
-        <img
+      <div ref={selfDetailRef} className="lg:w-5/12 w-50 relative">
+        <motion.img
+          variants={itemVariants}
+          initial="close"
+          animate={isInView2 ? "open" : "close"}
+          custom={0.1}
+          src={image1}
+          alt="Image 1"
+          className="lg:w-100 w-200"
+        />
+        <motion.img
+          variants={itemVariants}
+          initial="close"
+          animate={isInView2 ? "open" : "close"}
+          custom={0.2}
           src={image2}
           alt="Image 2"
           className="lg:w-100 w-200 absolute top-25 left-25 lg:top-50 lg:left-50 scale-45  "
         />
-        <img
+        <motion.img
+          variants={itemVariants}
+          initial="close"
+          animate={isInView2 ? "open" : "close"}
+          custom={0.3}
           src={image3}
           alt="Image 3"
           className="lg:w-100 w-200 absolute -top-25 -left-25 lg:-top-50 lg:-left-50 scale-45"
         />
       </div>
       <div className="lg:w-5/12 flex flex-col gap-y-5">
-        <h1 className="text-5xl font-bold text-center text-slate-800">
+        <motion.h1
+          variants={itemVariants}
+          initial="close"
+          animate={isInView2 ? "open" : "close"}
+          custom={0.4}
+          className="text-5xl font-bold text-center text-slate-800"
+        >
           Arel Smith
-        </h1>
-        <p className="text-center text-slate-800">
+        </motion.h1>
+        <motion.p
+          variants={itemVariants}
+          initial="close"
+          animate={isInView2 ? "open" : "close"}
+          custom={0.5}
+          className="text-center text-slate-800"
+        >
           a 17-year old student currently in my final year of vocational high
           school majoring in Visual Communication Design. While my foundation
           lies in the world of design, I've developed a strong passion for web
@@ -93,7 +151,7 @@ const SelfDetail: FC = () => {
           challenging myself to grow as both designer and web developer. This
           portofolio is a reflection of that journey and I'm just getting
           started.
-        </p>
+        </motion.p>
       </div>
     </div>
   );
@@ -147,16 +205,35 @@ const MySkill: FC = () => {
     ],
   ];
   const [activeTechStack, setActiveTechStack] = useState<number | null>(0);
+
+  const ctx = useContext(AnimationContext);
+
+  if (!ctx) return null;
+
+  const { skillsRef, itemVariants, isInView3 } = ctx;
+
   return (
-    <div className="h-screen flex flex-col gap-y-10">
+    <div ref={skillsRef} className=" flex flex-col gap-y-10">
       <div className=" w-10/12 mx-auto flex flex-col gap-y-30 mt-50">
         <div className="flex flex-col gap-y-5">
-          <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 text-center">
+          <motion.h1
+            variants={itemVariants}
+            initial="close"
+            animate={isInView3 ? "open" : "close"}
+            custom={0.1}
+            className="text-5xl lg:text-7xl font-bold text-slate-800 text-center"
+          >
             Skills & Expertise
-          </h1>
-          <p className="text-slate-800 text-center text-xl">
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            initial="close"
+            animate={isInView3 ? "open" : "close"}
+            custom={0.2}
+            className="text-slate-800 text-center text-xl"
+          >
             All of my technical skills.
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-col lg:flex-row gap-y-10 mx-auto gap-x-10">
           {skills.map((skill, key) => (
@@ -204,12 +281,14 @@ const MySkill: FC = () => {
 
 const AboutMe: FC = () => {
   return (
-    <Layout>
-      <Jumbotron />
-      <SelfDetail />
-      <MySkill />
-      <Footer />
-    </Layout>
+    <AnimationProvider>
+      <Layout>
+        <Jumbotron />
+        <SelfDetail />
+        <MySkill />
+        <Footer />
+      </Layout>
+    </AnimationProvider>
   );
 };
 
