@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Layout from "@/Layout";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import koffilah from "@/assets/projects/koffilah.webp";
 import { useMemo } from "react";
@@ -39,6 +40,10 @@ const Projects = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Projects | Arel Smith</title>
+        <meta name="description" content="Projects display of Arel Smith" />
+      </Helmet>
       <div className="max-w-5xl h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px] ">
         <h1 className="text-5xl lg:text-7xl font-bold">My Projects</h1>
 

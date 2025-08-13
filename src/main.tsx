@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
+import { HelmetProvider } from "react-helmet-async";
 
 import App from "./App.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -14,18 +15,20 @@ import ProjectDetails from "./pages/ProjectDetails.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CookiesProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="*" element={<NotFound />} />
-          <Route path="/" element={<App />} />
-          <Route path="/about" element={<AboutMe />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetails />} />
-          <Route path="/contact" element={<ContactPages />} />
-        </Routes>
-      </BrowserRouter>
-    </CookiesProvider>
+    <HelmetProvider>
+      <CookiesProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<App />} />
+            <Route path="/about" element={<AboutMe />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:slug" element={<ProjectDetails />} />
+            <Route path="/contact" element={<ContactPages />} />
+          </Routes>
+        </BrowserRouter>
+      </CookiesProvider>
+    </HelmetProvider>
   </StrictMode>
 );

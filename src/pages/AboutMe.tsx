@@ -3,6 +3,7 @@ import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
 import { useContext, useState, type FC } from "react";
 import { motion } from "motion/react";
 import AnimationProvider from "@/context/Animation/AnimationProvider";
+import { Helmet } from "react-helmet-async";
 
 import image1 from "@/assets/image_1.jpg";
 import image2 from "@/assets/image_2.jpg";
@@ -283,6 +284,10 @@ const AboutMe: FC = () => {
   return (
     <AnimationProvider>
       <Layout>
+        <Helmet>
+          <title>About Me | Arel Smith</title>
+          <meta name="description" content="Learn more about Arel Smith" />
+        </Helmet>
         <Jumbotron />
         <SelfDetail />
         <MySkill />

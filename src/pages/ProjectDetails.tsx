@@ -2,6 +2,7 @@ import Layout from "@/Layout";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
 
 type Project = {
   title: string;
@@ -54,6 +55,10 @@ const ProjectDetails = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{project.title} | Arel Smith</title>
+        <meta name="description" content={project.body} />
+      </Helmet>
       <div className="max-w-5xl h-screen mx-auto mt-[76px] flex flex-col gap-y-4 lg:gap-y-8 items-center">
         <img src={project.image} alt={project.title} />
         <h1 className="text-4xl font-bold">{project.title}</h1>

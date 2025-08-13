@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { SplashScreen } from "./SplashScreen";
 import { useCookies } from "react-cookie";
+import { Helmet } from "react-helmet-async";
 
 import Layout from "./Layout";
 import Jumbotron from "./components/Jumbotron";
@@ -12,6 +13,10 @@ import Footer from "./components/Footer";
 function MainScreen() {
   return (
     <Layout>
+      <Helmet>
+        <title>Home | Arel Smith</title>
+        <meta name="description" content="Home page of Arel Smith" />
+      </Helmet>
       <Sidebar />
       <Jumbotron />
       <AboutMe />

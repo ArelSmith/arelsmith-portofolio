@@ -5,6 +5,7 @@ import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { motion, useInView, type Variants } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ContactPages = () => {
   const MotionLink = motion.create(Link);
@@ -51,6 +52,10 @@ const ContactPages = () => {
   }, []);
   return (
     <Layout>
+      <Helmet>
+        <title>Contact | Arel Smith</title>
+        <meta name="description" content="Contact page of Arel Smith" />
+      </Helmet>
       <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
