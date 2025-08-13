@@ -1,13 +1,13 @@
 import Layout from "@/Layout";
-import aboutMeThumbnail from "@/assets/profile_about_me.jpg";
+import aboutMeThumbnail from "@/assets/profile_about_me.webp";
 import { useContext, useState, type FC } from "react";
 import { motion } from "motion/react";
 import AnimationProvider from "@/context/Animation/AnimationProvider";
 import { Helmet } from "react-helmet-async";
 
-import image1 from "@/assets/image_1.jpg";
-import image2 from "@/assets/image_2.jpg";
-import image3 from "@/assets/image_3.png";
+import image1 from "@/assets/image_1.webp";
+import image2 from "@/assets/image_2.webp";
+import image3 from "@/assets/image_3.webp";
 import { Box, Smartphone } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import Marquee from "react-fast-marquee";

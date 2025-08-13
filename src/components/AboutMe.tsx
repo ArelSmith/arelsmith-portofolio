@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronsRight } from "lucide-react";
 import VanillaTilt from "vanilla-tilt";
 
-import profileAboutMe from "../assets/profile_about_me.jpg";
+import profileAboutMe from "../assets/profile_about_me.webp";
 import { useEffect, useRef } from "react";
 const AboutMe = () => {
   const imageRef = useRef<HTMLImageElement>(null);

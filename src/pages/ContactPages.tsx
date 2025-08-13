@@ -1,4 +1,4 @@
-import contactImage from "@/assets/contact_image_cropped.jpeg";
+import contactImage from "@/assets/contact_image_cropped.webp";
 import Footer from "@/components/Footer";
 import Layout from "@/Layout";
 import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";

@@ -2,7 +2,7 @@ import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { motion, useInView, type Variants } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import contactImage from "@/assets/contact_image_cropped.jpeg";
+import contactImage from "@/assets/contact_image_cropped.webp";
 
 const Contacts = () => {
   const MotionLink = motion.create(Link);

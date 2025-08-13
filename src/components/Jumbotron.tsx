@@ -3,7 +3,7 @@ import { motion, useInView, type Variants } from "motion/react";
 import { ReactTyped } from "react-typed";
 
 // Image
-import profile from "../../src/assets/profile_temp_2.png";
+import profile from "../../src/assets/profile.webp";
 import { useEffect, useRef, useState } from "react";
 
 const Jumbotron = () => {
@@ -130,6 +130,7 @@ const Jumbotron = () => {
             initial="closeReversed"
             animate={isInView ? "open" : "closeReversed"}
             src={profile}
+            loading="lazy"
             alt="Profile"
             className="grayscale-0 lg:grayscale hover:grayscale-0 transition duration-300"
           />
