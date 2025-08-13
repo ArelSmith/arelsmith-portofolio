@@ -1,10 +1,9 @@
 import Footer from "@/components/Footer";
 import Layout from "@/Layout";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import koffilah from "@/assets/projects/koffilah.webp";
-import { setSelectedProject } from "@/store/store";
+import { useMemo } from "react";
 
 interface ProjectsType {
   title: string;
@@ -13,24 +12,28 @@ interface ProjectsType {
   body: string;
   image: string;
   link: string;
+  tech: string[];
 }
 
 const Projects = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const projects: ProjectsType[] = [
-    {
-      title: "Koffilah",
-      slug: "koffilah",
-      preview: "A Website for Koffilah",
-      body: "Detailed information about Koffilah.",
-      image: koffilah,
-      link: "https://arelsmith.github.io/koffilah-roastery/",
-    },
-  ];
+  const projects: ProjectsType[] = useMemo(
+    () => [
+      {
+        title: "Koffilah",
+        slug: "koffilah",
+        preview: "A Website for Koffilah",
+        body: "Detailed information about Koffilah.",
+        image: koffilah,
+        link: "https://arelsmith.github.io/koffilah-roastery/",
+        tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+      },
+    ],
+    []
+  );
 
   const handleClick = (project: ProjectsType) => {
-    dispatch(setSelectedProject(project));
+    localStorage.setItem("selectedProject", JSON.stringify(project));
     navigate(`/projects/${project.slug}`);
   };
   return (
@@ -42,11 +45,25 @@ const Projects = () => {
           <ul className="flex flex-col lg:flex-row lg:flex-wrap lg:gap-x-4 justify-center gap-y-4 mt-8">
             {projects.map((project, index) => (
               <button onClick={() => handleClick(project)} key={index}>
-                <li className="rounded-lg shadow-md relative w-75 lg:w-100">
-                  <img src={project.image} alt={project.title} />
-                  <div className="opacity-0 hover:opacity-75 transition-all absolute bottom-0 left-0 right-0 top-0 bg-white flex flex-col justify-center items-center">
+                <li className="group rounded-lg shadow-md relative w-75 lg:w-150">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="group-hover:opacity-0"
+                  />
+                  <div className="transition-all absolute bottom-0 left-0 right-0 top-0 bg-white flex flex-col justify-center items-center">
                     <h2 className="text-2xl font-semibold">{project.title}</h2>
                     <p>{project.preview}</p>
+                    <div className="flex flex-row gap-x-2">
+                      {project.tech.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="bg-gray-500 text-white lg:py-2 lg:px-5 "
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </li>
               </button>
