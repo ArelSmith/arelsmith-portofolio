@@ -59,14 +59,12 @@ const ProjectDetails = () => {
         <title>{project.title} | Arel Smith</title>
         <meta name="description" content={project.body} />
       </Helmet>
-      <div className="max-w-5xl h-screen mx-auto mt-[76px] flex flex-col gap-y-4 lg:gap-y-8 items-center">
+      <div className="max-w-5xl h-full mx-auto mt-[76px] flex flex-col gap-y-4 lg:gap-y-8 items-center mb-25">
         <img src={project.image} alt={project.title} />
         <h1 className="text-4xl font-bold">{project.title}</h1>
-        <p className="p-5 lg:p-0 text-center text-lg font-medium">
-          {project.body}
-        </p>
+        <p className="p-5 lg:p-0 text-center text-lg">{project.body}</p>
         <h3 className="text-2xl font-semibold">Technologies Used</h3>
-        <div className="flex flex-row flex-wrap gap-x-2">
+        <div className="flex flex-row flex-wrap gap-x-2 justify-center gap-y-2">
           {project.tech.map((tech, index) => (
             <span
               key={index}
@@ -83,13 +81,17 @@ const ProjectDetails = () => {
           >
             Back to project
           </Link>
-          <Link
-            to={project.link}
-            target="_blank"
-            className="border hover:bg-tertiary hover:text-white transition-colors border-tertiary text-gray-800 text-sm py-2 px-4 rounded"
-          >
-            Visit Project
-          </Link>
+          {project.link == null ? (
+            <></>
+          ) : (
+            <Link
+              to={project.link}
+              target="_blank"
+              className="border hover:bg-tertiary hover:text-white transition-colors border-tertiary text-tertiary text-sm py-2 px-4 rounded"
+            >
+              Visit Project
+            </Link>
+          )}
         </div>
       </div>
       <Footer />

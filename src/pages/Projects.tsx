@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import koffilah from "@/assets/projects/koffilah.webp";
+import aero from "@/assets/projects/aero.webp";
+import votingapposis from "@/assets/projects/votingapposis.webp";
+
 import { useMemo } from "react";
 
 interface ProjectsType {
@@ -12,7 +15,7 @@ interface ProjectsType {
   preview: string;
   body: string;
   image: string;
-  link: string;
+  link: string | null;
   tech: string[];
 }
 
@@ -21,13 +24,31 @@ const Projects = () => {
   const projects: ProjectsType[] = useMemo(
     () => [
       {
+        title: "Voting App Osis",
+        slug: "voting-app-osis",
+        preview: "Simple voting counter system",
+        body: "Voting App OSIS is a digital platform designed to make student council elections easier, faster, and more transparent. With real-time vote counting, every paslon's progress can be tracked instantly and accurately. The app provides a secure and user-friendly experience for both voters and administrators. Bringing technology into school democracy, Voting App OSIS ensures fair and efficient elections.",
+        image: votingapposis,
+        link: "https://voting-app-osis.vercel.app/",
+        tech: ["Tailwind CSS", "React"],
+      },
+      {
         title: "Koffilah",
         slug: "koffilah",
         preview: "An UI Design for Koffilah",
         body: "Koffilah is a fiction project for educational purposes to supporting my school project for making a brand identity. This project showcases a modern and user-friendly interface designed with TailwindCSS. I haven't translated it to React App so its just only static site without any features. I made this project to practice TailwindCSS after moved from Bootstrap.",
         image: koffilah,
         link: "https://arelsmith.github.io/koffilah-roastery/",
-        tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+        tech: ["Tailwind CSS"],
+      },
+      {
+        title: "Aero Flight Booking",
+        slug: "aero-flight-booking",
+        preview: "A fullstack web application for booking flights",
+        body: "Aero Booking Flights is a modern web application built with Laravel that simplifies the way travelers search and book flights. With a clean design and intuitive interface, users can explore destinations, check flight details, and make reservations with ease. The platform ensures fast, secure, and reliable booking powered by Laravel's robust backend. Perfect for anyone who values convenience, Aero Booking Flights makes planning your journey smoother than ever.",
+        image: aero,
+        link: null,
+        tech: ["Tailwind CSS", "Laravel", "Filament", "Midtrans"],
       },
     ],
     []
@@ -44,7 +65,7 @@ const Projects = () => {
         <title>Projects | Arel Smith</title>
         <meta name="description" content="Projects display of Arel Smith" />
       </Helmet>
-      <div className="max-w-5xl h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px] ">
+      <div className="min-h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px] ">
         <h1 className="text-5xl lg:text-7xl font-bold">My Projects</h1>
 
         {projects.length > 0 ? (
@@ -57,6 +78,7 @@ const Projects = () => {
               >
                 <img
                   src={project.image}
+                  loading="lazy"
                   alt={project.title}
                   className="transition-opacity duration-300"
                 />
