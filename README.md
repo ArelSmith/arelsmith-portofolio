@@ -27,6 +27,6 @@ yarn dev
 ```
 
 ## 📞 Contact
-Fell free to reach out!
+Feel free to reach out!
 - Instagram: @arelsmith6
 - Gmail: arelarel576@gmail.com
