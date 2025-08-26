@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
+import { Github } from "lucide-react";
 
 type Project = {
   title: string;
@@ -11,6 +12,7 @@ type Project = {
   body: string;
   image: string;
   link: string;
+  github: string;
   tech: string[];
 };
 
@@ -77,21 +79,29 @@ const ProjectDetails = () => {
         <div className="flex flex-row gap-x-2">
           <Link
             to="/projects"
-            className="bg-tertiary text-white text-sm py-2 px-4 rounded"
+            className="bg-tertiary text-center text-white text-sm py-2 px-4 rounded"
           >
             Back to project
           </Link>
+
           {project.link == null ? (
             <></>
           ) : (
             <Link
               to={project.link}
               target="_blank"
-              className="border hover:bg-tertiary hover:text-white transition-colors border-tertiary text-tertiary text-sm py-2 px-4 rounded"
+              className="border hover:bg-tertiary text-center hover:text-white transition-colors border-tertiary text-tertiary text-sm py-2 px-4 rounded"
             >
               Visit Project
             </Link>
           )}
+          <Link
+            to={project.github}
+            target="_blank"
+            className="bg-white hover:bg-tertiary text-center hover:text-white transition-colors border-tertiary text-sm py-2 px-4 rounded flex flex-row justify-center items-center gap-x-2"
+          >
+            <Github /> View on GitHub
+          </Link>
         </div>
       </div>
       <Footer />

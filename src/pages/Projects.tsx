@@ -16,6 +16,7 @@ interface ProjectsType {
   body: string;
   image: string;
   link: string | null;
+  github: string;
   tech: string[];
 }
 
@@ -30,6 +31,7 @@ const Projects = () => {
         body: "Voting App OSIS is a digital platform designed to make student council elections easier, faster, and more transparent. With real-time vote counting, every paslon's progress can be tracked instantly and accurately. The app provides a secure and user-friendly experience for both voters and administrators. Bringing technology into school democracy, Voting App OSIS ensures fair and efficient elections.",
         image: votingapposis,
         link: "https://voting-app-osis.vercel.app/",
+        github: "https://github.com/ArelSmith/voting-app-osis",
         tech: ["Tailwind CSS", "React"],
       },
       {
@@ -39,6 +41,7 @@ const Projects = () => {
         body: "Koffilah is a fiction project for educational purposes to supporting my school project for making a brand identity. This project showcases a modern and user-friendly interface designed with TailwindCSS. I haven't translated it to React App so its just only static site without any features. I made this project to practice TailwindCSS after moved from Bootstrap.",
         image: koffilah,
         link: "https://arelsmith.github.io/koffilah-roastery/",
+        github: "https://github.com/ArelSmith/koffilah-roastery",
         tech: ["Tailwind CSS"],
       },
       {
@@ -48,6 +51,7 @@ const Projects = () => {
         body: "Aero Booking Flights is a modern web application built with Laravel that simplifies the way travelers search and book flights. With a clean design and intuitive interface, users can explore destinations, check flight details, and make reservations with ease. The platform ensures fast, secure, and reliable booking powered by Laravel's robust backend. Perfect for anyone who values convenience, Aero Booking Flights makes planning your journey smoother than ever.",
         image: aero,
         link: null,
+        github: "https://github.com/ArelSmith/aero-flight-booking",
         tech: ["Tailwind CSS", "Laravel", "Filament", "Midtrans"],
       },
     ],
