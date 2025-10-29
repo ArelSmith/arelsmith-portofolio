@@ -69,7 +69,7 @@ const Projects = () => {
         <title>Projects | Arel Smith</title>
         <meta name="description" content="Projects display of Arel Smith" />
       </Helmet>
-      <div className="min-h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px] ">
+      <div className="min-h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px]">
         <h1 className="text-5xl lg:text-7xl font-bold">My Projects</h1>
 
         {projects.length > 0 ? (

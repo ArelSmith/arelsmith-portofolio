@@ -65,12 +65,12 @@ const Jumbotron = () => {
             >
               Arel Smith
             </motion.h3>
-            <div className="max-w-3xl h-25 lg:h-50">
+            <div className="max-w-3xl h-35 lg:text-left text-center lg:h-55 mt-5">
               <ReactTyped
-                strings={["Junior Web <br /> Developer"]}
+                strings={["Fullstack Web <br /> Developer"]}
                 loop
                 typeSpeed={60}
-                className="text-5xl lg:text-7xl lg:w-[150%] lg:text-left font-bold text-center text-slate-800"
+                className="text-5xl lg:text-7xl lg:w-[150%] font-bold text-slate-800"
               />
             </div>
           </div>

@@ -56,7 +56,7 @@ const ContactPages = () => {
         <title>Contact | Arel Smith</title>
         <meta name="description" content="Contact page of Arel Smith" />
       </Helmet>
-      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between">
+      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between mt-[76px] mb-26">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
             ref={itemRef}
