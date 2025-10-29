@@ -82,7 +82,7 @@ const Jumbotron = () => {
             custom={0.4}
             className="lg:text-left text-center text-xl text-slate-800 opacity-75 font-medium"
           >
-            Hello! I am Arel Smith, a 17-year old Junior Web Developer that
+            Hello! I am Arel Smith, a 17-year old Fullstack Web Developer that
             passionate about building clean, user-friendly websites that blend
             both aesthetic design and functional development. <br />
             Let's build something awesome!
