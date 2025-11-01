@@ -38,11 +38,11 @@ const Projects = () => {
         title: "Koffilah",
         slug: "koffilah",
         preview: "An UI Design for Koffilah",
-        body: "Koffilah is a fiction project for educational purposes to supporting my school project for making a brand identity. This project showcases a modern and user-friendly interface designed with TailwindCSS. I haven't translated it to React App so its just only static site without any features. I made this project to practice TailwindCSS after moved from Bootstrap.",
+        body: "Koffilah is a fiction project for educational purposes to supporting my school project for making a brand identity. This project showcases a modern and user-friendly interface designed with HTML and Vanilla CSS. I haven't translated it to React App so its just only static site without any features.",
         image: koffilah,
         link: "https://arelsmith.github.io/koffilah-roastery/",
         github: "https://github.com/ArelSmith/koffilah-roastery",
-        tech: ["Tailwind CSS"],
+        tech: ["Vanilla CSS"],
       },
       {
         title: "Aero Flight Booking",
