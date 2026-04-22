@@ -143,15 +143,14 @@ const SelfDetail: FC = () => {
           custom={0.5}
           className="text-center text-slate-800"
         >
-          a 17-year old student currently in my final year of vocational high
-          school majoring in Visual Communication Design. While my foundation
-          lies in the world of design, I've developed a strong passion for web
-          development, especially in crafting and building clean, responsive
-          interfaces that blend aesthetics with functionality. I enjoy learning
-          new technologies, building digital experiences, and constantly
-          challenging myself to grow as both designer and web developer. This
-          portofolio is a reflection of that journey and I'm just getting
-          started.
+          I am 18-year old person that has interest in Web Development. While my
+          foundation lies in the world of design, I've developed a strong
+          passion for web development, especially in crafting and building
+          clean, responsive interfaces that blend aesthetics with functionality.
+          I enjoy learning new technologies, building digital experiences, and
+          constantly challenging myself to grow as both designer and web
+          developer. This portofolio is a reflection of that journey and I'm
+          just getting started.
         </motion.p>
       </div>
     </div>
