@@ -91,7 +91,11 @@ const Admin = () => {
       .from("projects")
       .select("*")
       .order("id", { ascending: false });
-    if (!error && data) setProjects(data);
+    if (error) {
+      console.error("Error fetching projects:", error);
+    } else if (data) {
+      setProjects(data);
+    }
   };
 
   const fetchMessages = async () => {
@@ -99,7 +103,11 @@ const Admin = () => {
       .from("messages")
       .select("*")
       .order("id", { ascending: false });
-    if (!error && data) setMessages(data);
+    if (error) {
+      console.error("Error fetching messages:", error);
+    } else if (data) {
+      setMessages(data);
+    }
   };
 
   const handleLogin = async (e: React.FormEvent) => {

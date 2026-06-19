@@ -97,7 +97,10 @@ const ContactPages = () => {
         <title>Contact | Arel Smith</title>
         <meta name="description" content="Contact page of Arel Smith" />
       </Helmet>
-      <div ref={itemRef} className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between mt-[76px] mb-26">
+      <div
+        ref={itemRef}
+        className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 lg:flex-row lg:h-screen items-center justify-between mt-[76px] mb-26"
+      >
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
             variants={itemVariants}
@@ -117,10 +120,8 @@ const ContactPages = () => {
           >
             Interested in working together or have a project in mind? Don't
             hesistate to reach out, let's bring your ideas to life! <br />
-            <br />
-            arelarel576@gmail.com
           </motion.p>
-          
+
           <motion.form
             onSubmit={handleSubmitMessage}
             variants={itemVariants}

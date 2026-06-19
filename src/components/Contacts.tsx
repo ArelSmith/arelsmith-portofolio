@@ -90,7 +90,10 @@ const Contacts = () => {
   }, []);
   return (
     <section id="contact">
-      <div ref={itemRef} className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between mb-8">
+      <div
+        ref={itemRef}
+        className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between mb-8"
+      >
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
             variants={itemVariants}
@@ -110,10 +113,8 @@ const Contacts = () => {
           >
             Interested in working together or have a project in mind? Don't
             hesistate to reach out, let's bring your ideas to life! <br />
-            <br />
-            arelarel576@gmail.com
           </motion.p>
-          
+
           <motion.form
             onSubmit={handleSubmitMessage}
             variants={itemVariants}
