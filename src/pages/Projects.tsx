@@ -3,60 +3,55 @@ import Layout from "@/Layout";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import koffilah from "@/assets/projects/koffilah.webp";
-import aero from "@/assets/projects/aero.webp";
-import votingapposis from "@/assets/projects/votingapposis.webp";
-
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 interface ProjectsType {
+  id?: number;
   title: string;
   slug: string;
   preview: string;
   body: string;
-  image: string;
+  image?: string;
+  image_url?: string;
   link: string | null;
-  github: string;
-  tech: string[];
+  github: string | null;
+  tech: string[] | string;
 }
 
 const Projects = () => {
   const navigate = useNavigate();
-  const projects: ProjectsType[] = useMemo(
-    () => [
-      {
-        title: "Voting App Osis",
-        slug: "voting-app-osis",
-        preview: "Simple voting counter system",
-        body: "Voting App OSIS is a digital platform designed to make student council elections easier, faster, and more transparent. With real-time vote counting, every paslon's progress can be tracked instantly and accurately. The app provides a secure and user-friendly experience for both voters and administrators. Bringing technology into school democracy, Voting App OSIS ensures fair and efficient elections.",
-        image: votingapposis,
-        link: "https://voting-app-osis.vercel.app/",
-        github: "https://github.com/ArelSmith/voting-app-osis",
-        tech: ["Tailwind CSS", "React"],
-      },
-      {
-        title: "Koffilah",
-        slug: "koffilah",
-        preview: "An UI Design for Koffilah",
-        body: "Koffilah is a fiction project for educational purposes to supporting my school project for making a brand identity. This project showcases a modern and user-friendly interface designed with HTML and Vanilla CSS. I haven't translated it to React App so its just only static site without any features.",
-        image: koffilah,
-        link: "https://arelsmith.github.io/koffilah-roastery/",
-        github: "https://github.com/ArelSmith/koffilah-roastery",
-        tech: ["Vanilla CSS"],
-      },
-      {
-        title: "Aero Flight Booking",
-        slug: "aero-flight-booking",
-        preview: "A fullstack web application for booking flights",
-        body: "Aero Booking Flights is a modern web application built with Laravel that simplifies the way travelers search and book flights. With a clean design and intuitive interface, users can explore destinations, check flight details, and make reservations with ease. The platform ensures fast, secure, and reliable booking powered by Laravel's robust backend. Perfect for anyone who values convenience, Aero Booking Flights makes planning your journey smoother than ever.",
-        image: aero,
-        link: null,
-        github: "https://github.com/ArelSmith/aero-flight-booking",
-        tech: ["Tailwind CSS", "Laravel", "Filament", "Midtrans"],
-      },
-    ],
-    []
-  );
+  const [projects, setProjects] = useState<ProjectsType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const ITEMS_PER_PAGE = 6;
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      const from = (currentPage - 1) * ITEMS_PER_PAGE;
+      const to = from + ITEMS_PER_PAGE - 1;
+
+      const { data, error, count } = await supabase
+        .from("projects")
+        .select("*", { count: "exact" })
+        .order("id", { ascending: false })
+        .range(from, to);
+
+      if (error) {
+        console.error("Error fetching projects:", error);
+      } else {
+        if (data) setProjects(data);
+        if (count !== null) setTotalCount(count);
+      }
+      setLoading(false);
+    };
+
+    fetchProjects();
+  }, [currentPage]);
+
+  const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
 
   const handleClick = (project: ProjectsType) => {
     localStorage.setItem("selectedProject", JSON.stringify(project));
@@ -69,42 +64,93 @@ const Projects = () => {
         <title>Projects | Arel Smith</title>
         <meta name="description" content="Projects display of Arel Smith" />
       </Helmet>
-      <div className="min-h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px]">
+      <div className="min-h-screen flex flex-col gap-y-10 mx-auto items-center mt-[76px] mb-20">
         <h1 className="text-5xl lg:text-7xl font-bold">My Projects</h1>
 
-        {projects.length > 0 ? (
+        {loading ? (
+          <div className="flex flex-col items-center gap-4 mt-20">
+            <div className="w-12 h-12 border-4 border-tertiary border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-slate-800 font-semibold">Loading projects...</p>
+          </div>
+        ) : projects.length > 0 ? (
           <ul className="flex flex-col lg:flex-row lg:flex-wrap lg:gap-x-4 justify-center gap-y-4 mt-8">
-            {projects.map((project, index) => (
-              <li
-                key={index}
-                className="group rounded-lg shadow-md relative w-75 lg:w-150 cursor-pointer"
-                onClick={() => handleClick(project)}
-              >
-                <img
-                  src={project.image}
-                  loading="lazy"
-                  alt={project.title}
-                  className="transition-opacity duration-300"
-                />
-                <div className="transition-all absolute inset-0 bg-white flex flex-col gap-y-2 lg:gap-y-4 justify-center items-center opacity-0 group-hover:opacity-100 p-4">
-                  <h2 className="text-2xl font-semibold">{project.title}</h2>
-                  <p className="text-center">{project.preview}</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {project.tech.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-gray-500 text-white text-sm font-medium py-1 px-3 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+            {projects.map((project, index) => {
+              const projectImage = project.image || project.image_url;
+              const projectTech = Array.isArray(project.tech)
+                ? project.tech
+                : typeof project.tech === "string"
+                ? project.tech.split(",").map((t) => t.trim()).filter(Boolean)
+                : [];
+
+              return (
+                <li
+                  key={index}
+                  className="group rounded-lg shadow-md relative w-75 lg:w-150 cursor-pointer overflow-hidden border border-slate-100"
+                  onClick={() => handleClick(project)}
+                >
+                  {projectImage && (
+                    <img
+                      src={projectImage}
+                      loading="lazy"
+                      alt={project.title}
+                      className="transition-opacity duration-300 w-full h-auto object-cover"
+                    />
+                  )}
+                  <div className="transition-all absolute inset-0 bg-white flex flex-col gap-y-2 lg:gap-y-4 justify-center items-center opacity-0 group-hover:opacity-100 p-4">
+                    <h2 className="text-2xl font-semibold text-slate-800">{project.title}</h2>
+                    <p className="text-center text-slate-600">{project.preview}</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {projectTech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-gray-500 text-white text-sm font-medium py-1 px-3 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         ) : (
-          <p>No projects available</p>
+          <p className="mt-10 text-slate-500">No projects available</p>
+        )}
+
+        {/* PAGINATION CONTROLS */}
+        {!loading && totalPages > 1 && (
+          <div className="flex flex-row justify-center items-center gap-x-2 mt-12">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-800 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition active:scale-95"
+            >
+              Previous
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 rounded-xl text-sm font-bold transition active:scale-95 ${
+                  currentPage === page
+                    ? "bg-tertiary text-white shadow-md"
+                    : "border border-slate-200 bg-white text-slate-800 hover:bg-slate-50"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-800 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition active:scale-95"
+            >
+              Next
+            </button>
+          </div>
         )}
       </div>
       <Footer />

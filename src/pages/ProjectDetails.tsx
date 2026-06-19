@@ -10,10 +10,11 @@ type Project = {
   slug: string;
   preview: string;
   body: string;
-  image: string;
-  link: string;
-  github: string;
-  tech: string[];
+  image?: string;
+  image_url?: string;
+  link?: string | null;
+  github?: string | null;
+  tech?: string[] | string;
 };
 
 const ProjectDetails = () => {
@@ -55,6 +56,13 @@ const ProjectDetails = () => {
 
   if (!project) return null;
 
+  const projectImage = project.image || project.image_url;
+  const projectTech: string[] = Array.isArray(project.tech)
+    ? project.tech
+    : typeof project.tech === "string"
+    ? project.tech.split(",").map((t) => t.trim()).filter(Boolean)
+    : [];
+
   return (
     <Layout>
       <Helmet>
@@ -62,20 +70,26 @@ const ProjectDetails = () => {
         <meta name="description" content={project.body} />
       </Helmet>
       <div className="max-w-5xl h-full mx-auto mt-[76px] flex flex-col gap-y-4 lg:gap-y-8 items-center mb-25">
-        <img src={project.image} alt={project.title} />
+        {projectImage && <img src={projectImage} alt={project.title} />}
         <h1 className="text-4xl font-bold">{project.title}</h1>
         <p className="p-5 lg:p-0 text-center text-lg">{project.body}</p>
-        <h3 className="text-2xl font-semibold">Technologies Used</h3>
-        <div className="flex flex-row flex-wrap gap-x-2 justify-center gap-y-2">
-          {project.tech.map((tech, index) => (
-            <span
-              key={index}
-              className="bg-white text-gray-800 text-sm font-medium py-1 px-3 rounded"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        
+        {projectTech.length > 0 && (
+          <>
+            <h3 className="text-2xl font-semibold">Technologies Used</h3>
+            <div className="flex flex-row flex-wrap gap-x-2 justify-center gap-y-2">
+              {projectTech.map((tech, index) => (
+                <span
+                  key={index}
+                  className="bg-white text-gray-800 text-sm font-medium py-1 px-3 rounded"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
+        
         <div className="flex flex-row gap-x-2">
           <Link
             to="/projects"
@@ -84,9 +98,7 @@ const ProjectDetails = () => {
             Back to project
           </Link>
 
-          {project.link == null ? (
-            <></>
-          ) : (
+          {project.link && (
             <Link
               to={project.link}
               target="_blank"
@@ -95,13 +107,16 @@ const ProjectDetails = () => {
               Visit Project
             </Link>
           )}
-          <Link
-            to={project.github}
-            target="_blank"
-            className="bg-white hover:bg-tertiary text-center hover:text-white transition-colors border-tertiary text-sm py-2 px-4 rounded flex flex-row justify-center items-center gap-x-2"
-          >
-            <Github /> View on GitHub
-          </Link>
+
+          {project.github && (
+            <Link
+              to={project.github}
+              target="_blank"
+              className="bg-white hover:bg-tertiary text-center hover:text-white transition-colors border-tertiary text-sm py-2 px-4 rounded flex flex-row justify-center items-center gap-x-2"
+            >
+              <Github /> View on GitHub
+            </Link>
+          )}
         </div>
       </div>
       <Footer />

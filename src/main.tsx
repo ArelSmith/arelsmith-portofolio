@@ -12,6 +12,7 @@ import { ScrollToTop } from "./components/ScrollToTop.tsx";
 import Projects from "./pages/Projects.tsx";
 import ContactPages from "./pages/ContactPages.tsx";
 import ProjectDetails from "./pages/ProjectDetails.tsx";
+import Admin from "./pages/Admin.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectDetails />} />
             <Route path="/contact" element={<ContactPages />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </BrowserRouter>
       </CookiesProvider>
