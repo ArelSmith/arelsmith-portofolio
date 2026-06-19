@@ -3,11 +3,52 @@ import { motion, useInView, type Variants } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import contactImage from "@/assets/contact_image_cropped.webp";
+import { supabase } from "@/lib/supabase";
 
 const Contacts = () => {
   const MotionLink = motion.create(Link);
   const itemRef = useRef(null);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmitMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const { error } = await supabase.from("messages").insert([
+        {
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        },
+      ]);
+
+      if (error) throw error;
+
+      setSubmitSuccess(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (err) {
+      const error = err as Error;
+      setSubmitError(error.message || "Failed to send message.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const isInView = useInView(itemRef, {
     once: false,
   });
@@ -49,10 +90,9 @@ const Contacts = () => {
   }, []);
   return (
     <section id="contact">
-      <div className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between mb-8">
+      <div ref={itemRef} className="max-w-8/12 mx-auto flex flex-col-reverse gap-y-6 mt-50 lg:flex-row lg:min-h-screen lg:-mt-[76px] items-center justify-between mb-8">
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.h1
-            ref={itemRef}
             variants={itemVariants}
             initial="close"
             animate={isInView ? "open" : "close"}
@@ -62,7 +102,6 @@ const Contacts = () => {
             Let me know!
           </motion.h1>
           <motion.p
-            ref={itemRef}
             variants={itemVariants}
             initial="close"
             animate={isInView ? "open" : "close"}
@@ -74,9 +113,66 @@ const Contacts = () => {
             <br />
             arelarel576@gmail.com
           </motion.p>
+          
+          <motion.form
+            onSubmit={handleSubmitMessage}
+            variants={itemVariants}
+            initial="close"
+            animate={isInView ? "open" : "close"}
+            custom={0.25}
+            className="flex flex-col gap-y-3 mt-4 mb-4 text-left w-full"
+          >
+            <div className="flex flex-col gap-1">
+              <input
+                type="text"
+                required
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition bg-white text-slate-800 text-sm"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <input
+                type="email"
+                required
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition bg-white text-slate-800 text-sm"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <textarea
+                required
+                rows={3}
+                placeholder="Your Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition bg-white text-slate-800 text-sm resize-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-tertiary text-white py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-[#5f2f1c] active:scale-95 transition disabled:opacity-50 hover:cursor-pointer"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+            {submitSuccess && (
+              <span className="text-green-600 text-xs font-semibold">
+                Message sent successfully! Thank you.
+              </span>
+            )}
+            {submitError && (
+              <span className="text-red-500 text-xs font-semibold">
+                Error: {submitError}
+              </span>
+            )}
+          </motion.form>
+
           <div className="flex flex-row gap-x-2 justify-center lg:justify-start">
             <MotionLink
-              ref={itemRef}
               initial={{ y: 80, opacity: 0 }}
               animate={
                 isInView
@@ -96,7 +192,6 @@ const Contacts = () => {
               <Instagram />
             </MotionLink>
             <MotionLink
-              ref={itemRef}
               initial={{ y: 80, opacity: 0 }}
               animate={
                 isInView
@@ -116,7 +211,6 @@ const Contacts = () => {
               <Github />
             </MotionLink>
             <MotionLink
-              ref={itemRef}
               initial={{ y: 80, opacity: 0 }}
               animate={
                 isInView
@@ -135,7 +229,6 @@ const Contacts = () => {
               <Mail />
             </MotionLink>
             <MotionLink
-              ref={itemRef}
               initial={{ y: 80, opacity: 0 }}
               animate={
                 isInView
@@ -155,7 +248,6 @@ const Contacts = () => {
               <Linkedin />
             </MotionLink>
             <MotionLink
-              ref={itemRef}
               initial={{ y: 80, opacity: 0 }}
               animate={
                 isInView
@@ -182,7 +274,6 @@ const Contacts = () => {
         </div>
         <div className="flex flex-col gap-y-5 lg:max-w-4/12 w-full">
           <motion.img
-            ref={itemRef}
             variants={itemVariants}
             initial="close"
             animate={isInView ? "open" : "closeReversed"}
