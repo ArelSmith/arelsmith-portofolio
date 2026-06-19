@@ -1,14 +1,15 @@
 import path from "path";
-import { defineConfig } from "vite";
+import { defineConfig, type ViteDevServer, type Connect } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import fs from "fs";
+import type { IncomingMessage, ServerResponse } from "http";
 
 function imageUploadPlugin() {
   return {
     name: "image-upload-plugin",
-    configureServer(server: any) {
-      server.middlewares.use((req: any, res: any, next: any) => {
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use((req: IncomingMessage, res: ServerResponse, next: Connect.NextFunction) => {
         if (req.url === "/api/upload" && req.method === "POST") {
           let body = "";
           req.on("data", (chunk: string) => {
@@ -16,7 +17,7 @@ function imageUploadPlugin() {
           });
           req.on("end", () => {
             try {
-              const { filename, base64 } = JSON.parse(body);
+              const { base64 } = JSON.parse(body);
               const base64Data = base64.split(";base64,").pop();
               const buffer = Buffer.from(base64Data, "base64");
 
@@ -35,9 +36,10 @@ function imageUploadPlugin() {
 
               res.writeHead(200, { "Content-Type": "application/json" });
               res.end(JSON.stringify({ url: `/images/${newFilename}` }));
-            } catch (err: any) {
+            } catch (err) {
+              const error = err as Error;
               res.writeHead(500, { "Content-Type": "application/json" });
-              res.end(JSON.stringify({ error: err.message }));
+              res.end(JSON.stringify({ error: error.message }));
             }
           });
         } else {
